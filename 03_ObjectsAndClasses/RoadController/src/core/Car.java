@@ -8,6 +8,46 @@ public class Car
     public boolean hasVehicle;
     public boolean isSpecial;
 
+    public void setNumber(java.lang.String number) {
+        this.number = number;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setHasVehicle(boolean hasVehicle) {
+        this.hasVehicle = hasVehicle;
+    }
+
+    public boolean isHasVehicle() {
+        return hasVehicle;
+    }
+
+    public void setSpecial(boolean special) {
+        isSpecial = special;
+    }
+
+    public boolean isSpecial() {
+        return isSpecial;
+    }
+
     public String toString()
     {
         String special = isSpecial ? "СПЕЦТРАНСПОРТ " : "";

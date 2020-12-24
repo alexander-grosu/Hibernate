@@ -1,22 +1,66 @@
-
 public class Cat
 {
-    private double originWeight;
-    private double weight;
+    public static String catCopy;
+    public double originWeight;
+    public double weight;
+    public static int count = 0;
+    public String name;
 
-    private double minWeight;
-    private double maxWeight;
-    private double feedWeight;
-    private double drinkWeight;
+    public static Colors catColors;
+    public static final int EYE_COUNT = 2;
+    public static final double MIN_WEIGHT = 1_000;
+    public static final double MAX_WEIGHT = 9_000;
+    private double feedDrinkWeight;
     private double peeLostWeight;
 
     public Cat()
     {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
+        count ++;
+    }
 
+    public static Cat catCopy (Cat cat1)
+    {
+        Cat cat = new Cat();
+        cat.weight = cat1.weight;
+        cat.catColors = cat1.catColors;
+        return cat;
+    }
+
+    public Cat catCopy() {
+        return Cat.catCopy(this);
+    }
+
+    public Cat (String name,Colors catColors) {
+        this();
+        this.name = name;
+        this.catColors = catColors;
+    }
+
+    public String getName() {
+        return name;
+    }
+///количество глаз обьктов
+    public static int getEyeCount() {
+        return EYE_COUNT * Cat.count;
+    }
+///количество обьектов
+    public static int getCount() {
+            return count;
+    }
+
+    /// CAT COLORS SETTER & GETTER
+    public void setColorCat(Colors catColors){
+        this.catColors = catColors;
+    }
+
+    public Colors getColorCat() {
+        return catColors;
+    }
+    /// setter для веса
+    public void setWeight (double weight) {
+        this.weight = weight;
     }
 
     public void meow()
@@ -27,13 +71,13 @@ public class Cat
 
     public void feed()
     {
-        weight = weight = weight + 270; feedWeight = feedWeight + 270;
+        weight = weight + 300; feedDrinkWeight = feedDrinkWeight + 300;
         System.out.println("Feed");
     }
 
     public void drink()
     {
-        weight = weight + 150; drinkWeight = drinkWeight + 150;
+        weight = weight + 150; feedDrinkWeight = feedDrinkWeight + 150;
         System.out.println("Drink");
     }
 
@@ -43,17 +87,13 @@ public class Cat
         System.out.println("Pee");
     }
 
-    public Double getWeight()
+    public double getWeight()
     {
         return weight;
     }
 
-    public double getFeedWeight() {
-        return feedWeight;
-    }
-
-    public double getDrinkWeight() {
-        return drinkWeight;
+    public double getFeedDrinkWeight() {
+        return feedDrinkWeight;
     }
 
     public double getLostWeight() {
@@ -62,10 +102,10 @@ public class Cat
 
     public String getStatus()
     {
-        if(weight < minWeight) {
+        if(weight < MIN_WEIGHT) {
             return "Dead";
         }
-        else if(weight > maxWeight) {
+        else if(weight > MAX_WEIGHT) {
             return "Exploded";
         }
         else if(weight > originWeight) {
