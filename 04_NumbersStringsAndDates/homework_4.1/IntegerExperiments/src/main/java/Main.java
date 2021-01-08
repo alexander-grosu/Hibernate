@@ -11,8 +11,8 @@ public class Main {
     String s = Integer.toString(number);
     Integer sum = 0;
     for (int i = 0; i < s.length(); i++) {
-      sum += Integer.parseInt(String.valueOf(s.charAt(i)));
+        sum += Integer.parseInt(String.valueOf(s.charAt(i)));
+      }
+      return sum; 
     }
-    return sum;
   }
-}
