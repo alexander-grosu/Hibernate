@@ -3,6 +3,7 @@ public class Cat {
     public double weight;
     public static int count = 0;
     public String name;
+    public boolean isDead;
 
     public static Colors catColors;
     public static final int EYE_COUNT = 2;
@@ -38,26 +39,51 @@ public class Cat {
     }
 
     public void meow() {
-        weight = weight - 200;
-        System.out.println("Meow");
+        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
+            isDead = true;
+            System.out.println("no Meow");
+        } else {
+            isDead = false;
+            weight = weight - 200;
+            System.out.println("Meow");
+        }
     }
 
     public void feed() {
-        weight = weight + 300;
-        feedDrinkWeight = feedDrinkWeight + 300;
-        System.out.println("Feed");
+        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
+            isDead = true;
+            System.out.println("no Feed");
+        } else {
+            isDead = false;
+            weight = weight - 70;
+            weight = weight + 300;
+            feedDrinkWeight = feedDrinkWeight + 300;
+            System.out.println("Feed");
+        }
     }
 
     public void drink() {
-        weight = weight + 150;
-        feedDrinkWeight = feedDrinkWeight + 150;
-        System.out.println("Drink");
+        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
+            isDead = true;
+            System.out.println("no Drink");
+        } else {
+            isDead = false;
+            weight = weight + 150;
+            feedDrinkWeight = feedDrinkWeight + 150;
+            System.out.println("Drink");
+        }
     }
 
     public void pee() {
-        weight = weight - 70;
-        peeLostWeight = peeLostWeight + 70;
-        System.out.println("Pee");
+        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
+            isDead = true;
+            System.out.println("no Pee");
+        } else {
+            isDead = false;
+            weight = weight - 70;
+            peeLostWeight = peeLostWeight + 70;
+            System.out.println("Pee");
+        }
     }
 
     public double getWeight() {

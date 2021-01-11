@@ -48,6 +48,16 @@ public class Loader {
                 break;
             }
         }
+
+        Vasya.pee();
+        System.out.println("Vasya weight: " + Vasya.getWeight());
+        Vasya.drink();
+        System.out.println("Vasya weight: " + Vasya.getWeight());
+        Vasya.feed();
+        System.out.println("Vasya weight: " + Vasya.getWeight());
+        Vasya.meow();
+        System.out.println("Vasya weight: " + Vasya.getWeight());
+
         while (Murka.getWeight() >= Cat.MIN_WEIGHT || Murka.getWeight() <= Cat.MAX_WEIGHT) {
             System.out.println("Murka weight: " + Murka.getWeight());
             Murka.meow();
@@ -56,9 +66,14 @@ public class Loader {
                 break;
             }
         }
-        Murka.pee();
+
+        Murka.meow();
+        System.out.println("Murka weight: " + Murka.getWeight());
+        Murka.drink();
         System.out.println("Murka weight: " + Murka.getWeight());
         Murka.pee();
+        System.out.println("Murka weight: " + Murka.getWeight());
+        Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
         ///КОЛИЧЕСТВО обьектов и их глаз
