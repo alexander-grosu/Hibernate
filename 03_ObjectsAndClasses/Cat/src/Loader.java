@@ -1,7 +1,5 @@
-public class Loader
-{
-    public static void main(String[] args)
-    {
+public class Loader {
+    public static void main(String[] args) {
         Cat Mashka = new Cat();
         System.out.println("Mashka weight: " + Mashka.getWeight());
         Cat Barsik = new Cat();
@@ -12,20 +10,17 @@ public class Loader
         System.out.println("Vasya weight: " + Vasya.getWeight());
 
         ///создаем котов используя константы ENUM
-        Cat cat1 = new Cat("Pufik",Colors.BLACK);
+        Cat cat1 = new Cat("Pufik", Colors.BLACK);
         System.out.println(cat1.getName() + " weight: " + cat1.getWeight() + ", color: " + cat1.catColors);
-        Cat cat2 = new Cat("Garfield",Colors.RED);
-        System.out.println(cat2.getName() + " weight: " + cat2.getWeight() +  ", color: " + cat2.catColors);
-        Cat cat3 = new Cat("Jackie",Colors.BROWN);
-        System.out.println(cat3.getName() + " weight: " + cat3.getWeight() +  ", color: " + cat3.catColors);
-        Cat cat4 = new Cat("Dorian",Colors.GREY);
-        System.out.println(cat4.getName() + " weight: " + cat4.getWeight() +  ", color: " + cat4.catColors);
+        Cat cat2 = new Cat("Garfield", Colors.RED);
+        System.out.println(cat2.getName() + " weight: " + cat2.getWeight() + ", color: " + cat2.catColors);
+        Cat cat3 = new Cat("Jackie", Colors.BROWN);
+        System.out.println(cat3.getName() + " weight: " + cat3.getWeight() + ", color: " + cat3.catColors);
+        Cat cat4 = new Cat("Dorian", Colors.GREY);
+        System.out.println(cat4.getName() + " weight: " + cat4.getWeight() + ", color: " + cat4.catColors);
 
-        /// создаем копию кошки
-        Cat copyPufik = new Cat();
-        System.out.println("copyPufik: " + copyPufik.catCopy);
+        System.out.println("Cats count is: " + Cat.getCount());
 
-        ///CloneCat
 
         ///применяем методы и следим за изменением веса обьектов
         Mashka.drink();
@@ -43,7 +38,7 @@ public class Loader
         System.out.println("Mashka lost weight: " + Mashka.getLostWeight());
 
         ///применяем метод FEED & MEOW в циклах до статуса EXPLODED & DEAD
-        while(Vasya.getWeight() >= Cat.MIN_WEIGHT || Vasya.getWeight() <= Cat.MAX_WEIGHT) {
+        while (Vasya.getWeight() >= Cat.MIN_WEIGHT || Vasya.getWeight() <= Cat.MAX_WEIGHT) {
             System.out.println("Vasya weight: " + Vasya.getWeight());
             Vasya.feed();
             if (Vasya.getWeight() < Cat.MIN_WEIGHT || Vasya.getWeight() > Cat.MAX_WEIGHT) {
@@ -53,7 +48,7 @@ public class Loader
                 break;
             }
         }
-        while(Murka.getWeight() >= Cat.MIN_WEIGHT || Murka.getWeight() <= Cat.MAX_WEIGHT) {
+        while (Murka.getWeight() >= Cat.MIN_WEIGHT || Murka.getWeight() <= Cat.MAX_WEIGHT) {
             System.out.println("Murka weight: " + Murka.getWeight());
             Murka.meow();
             if (Murka.getWeight() < Cat.MIN_WEIGHT || Murka.getWeight() > Cat.MAX_WEIGHT) {
@@ -61,6 +56,10 @@ public class Loader
                 break;
             }
         }
+        Murka.pee();
+        System.out.println("Murka weight: " + Murka.getWeight());
+        Murka.pee();
+        System.out.println("Murka weight: " + Murka.getWeight());
 
         ///КОЛИЧЕСТВО обьектов и их глаз
         System.out.println("Cats count is: " + Cat.getCount() + " , eyes count is: " + Cat.getEyeCount());
