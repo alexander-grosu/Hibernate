@@ -19,7 +19,8 @@ public class Loader {
         Cat cat4 = new Cat("Dorian", Colors.GREY);
         System.out.println(cat4.getName() + " weight: " + cat4.getWeight() + ", color: " + cat4.catColors);
 
-        System.out.println("Cats count is: " + Cat.getCount());
+        ///количество обьектов и их глаз
+        System.out.println("Cats count is: " + Cat.getCount() + Cat.getEyeCount());
 
 
         ///применяем методы и следим за изменением веса обьектов
@@ -76,7 +77,7 @@ public class Loader {
         Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
-        ///КОЛИЧЕСТВО обьектов и их глаз
+        ///количество обьектов и их глаз
         System.out.println("Cats count is: " + Cat.getCount() + " , eyes count is: " + Cat.getEyeCount());
     }
 }
