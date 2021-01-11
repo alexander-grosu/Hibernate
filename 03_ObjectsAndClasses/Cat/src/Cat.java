@@ -39,6 +39,7 @@ public class Cat {
     }
 
     public void meow() {
+        /// условие - если обьект сломался , вышел из строя - мы не можем применять к нему методы, менять его параметры
         if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
             isDead = true;
             System.out.println("no Meow");
@@ -50,6 +51,7 @@ public class Cat {
     }
 
     public void feed() {
+        /// условие - если обьект сломался , вышел из строя - мы не можем применять к нему методы, менять его параметры
         if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
             isDead = true;
             System.out.println("no Feed");
@@ -63,6 +65,7 @@ public class Cat {
     }
 
     public void drink() {
+        /// условие - если обьект сломался , вышел из строя - мы не можем применять к нему методы, менять его параметры
         if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
             isDead = true;
             System.out.println("no Drink");
@@ -75,6 +78,7 @@ public class Cat {
     }
 
     public void pee() {
+        /// условие - если обьект сломался , вышел из строя - мы не можем применять к нему методы, менять его параметры
         if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
             isDead = true;
             System.out.println("no Pee");
@@ -100,9 +104,11 @@ public class Cat {
 
     public String getStatus() {
         if (weight < MIN_WEIGHT) {
+            ///если вес обьекта становится меньше минимального count--; (число обьектов уменьшается, вышел из строя, умер, сломался)
             Cat.count--;
             return "Dead";
         } else if (weight > MAX_WEIGHT) {
+            ///если вес обьекта становится больше максимального count--; (число обьектов уменьшается, вышел из строя, умер, сломался)
             Cat.count--;
             return "Exploded";
         } else if (weight > originWeight) {

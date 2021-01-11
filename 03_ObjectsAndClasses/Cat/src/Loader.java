@@ -9,7 +9,7 @@ public class Loader {
         Cat Vasya = new Cat();
         System.out.println("Vasya weight: " + Vasya.getWeight());
 
-        ///создаем котов используя константы ENUM
+        ///создаем обьекты используя константы ENUM
         Cat cat1 = new Cat("Pufik", Colors.BLACK);
         System.out.println(cat1.getName() + " weight: " + cat1.getWeight() + ", color: " + cat1.catColors);
         Cat cat2 = new Cat("Garfield", Colors.RED);
@@ -19,8 +19,10 @@ public class Loader {
         Cat cat4 = new Cat("Dorian", Colors.GREY);
         System.out.println(cat4.getName() + " weight: " + cat4.getWeight() + ", color: " + cat4.catColors);
 
-        ///количество обьектов и их глаз
-        System.out.println("Cats count is: " + Cat.getCount() + Cat.getEyeCount());
+        ///количество созданных обьектов и их глаз
+        System.out.println("Cats count is: " + Cat.getCount() + ", eyes cont: " + Cat.getEyeCount());
+
+
 
 
         ///применяем методы и следим за изменением веса обьектов
@@ -31,7 +33,7 @@ public class Loader {
         Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
-        ///применяем метод PEE следим за весом кошки и узнаем потерянный вес
+        ///применяем метод PEE следим за весом обьекта и узнаем потерянный вес
         Mashka.pee();
         System.out.println("Mashka weight: " + Mashka.getWeight());
         Mashka.pee();
@@ -50,6 +52,7 @@ public class Loader {
             }
         }
 
+        ///применяем методы к обьекту после того как он вышел из строя, сломался и смотрим на вес
         Vasya.pee();
         System.out.println("Vasya weight: " + Vasya.getWeight());
         Vasya.drink();
@@ -68,6 +71,7 @@ public class Loader {
             }
         }
 
+        ///применяем методы к обьекту после того как он вышел из строя, сломался и смотрим на вес
         Murka.meow();
         System.out.println("Murka weight: " + Murka.getWeight());
         Murka.drink();
@@ -77,7 +81,7 @@ public class Loader {
         Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
-        ///количество обьектов и их глаз
+        ///поверям количество созданных обьектов и их глаз после того как несколько обьектов сломались, умерли, вышли из строя
         System.out.println("Cats count is: " + Cat.getCount() + " , eyes count is: " + Cat.getEyeCount());
     }
 }
