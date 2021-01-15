@@ -36,7 +36,7 @@ public class Loader {
         ///применяем метод PEE следим за весом обьекта и узнаем потерянный вес
         Mashka.pee();
         System.out.println("Mashka weight: " + Mashka.getWeight());
-        Mashka.pee();
+        Mashka.meow();
         System.out.println("Mashka weight: " + Mashka.getWeight());
         System.out.println("Mashka lost weight: " + Mashka.getLostWeight());
 
@@ -67,6 +67,8 @@ public class Loader {
             Murka.meow();
             if (Murka.getWeight() < Cat.MIN_WEIGHT || Murka.getWeight() > Cat.MAX_WEIGHT) {
                 System.out.println("Murka: " + Murka.getStatus());
+                ///вес который потеряла Murka
+                System.out.println("Murka lost weight: " + Murka.getLostWeight());
                 break;
             }
         }

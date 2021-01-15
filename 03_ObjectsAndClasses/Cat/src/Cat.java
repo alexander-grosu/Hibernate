@@ -10,7 +10,7 @@ public class Cat {
     public static final double MIN_WEIGHT = 1_000;
     public static final double MAX_WEIGHT = 9_000;
     private double feedDrinkWeight;
-    private double peeLostWeight;
+    private double peeMeowLostWeight;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -46,6 +46,7 @@ public class Cat {
         } else {
             isDead = false;
             weight = weight - 200;
+            peeMeowLostWeight = peeMeowLostWeight + 200;
             System.out.println("Meow");
         }
     }
@@ -57,7 +58,6 @@ public class Cat {
             System.out.println("no Feed");
         } else {
             isDead = false;
-            weight = weight - 70;
             weight = weight + 300;
             feedDrinkWeight = feedDrinkWeight + 300;
             System.out.println("Feed");
@@ -85,7 +85,7 @@ public class Cat {
         } else {
             isDead = false;
             weight = weight - 70;
-            peeLostWeight = peeLostWeight + 70;
+            peeMeowLostWeight = peeMeowLostWeight + 70;
             System.out.println("Pee");
         }
     }
@@ -99,7 +99,7 @@ public class Cat {
     }
 
     public double getLostWeight() {
-        return peeLostWeight;
+        return peeMeowLostWeight;
     }
 
     public String getStatus() {
