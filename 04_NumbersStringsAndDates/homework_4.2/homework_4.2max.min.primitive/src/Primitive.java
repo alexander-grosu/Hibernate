@@ -10,8 +10,8 @@ public class Primitive {
         System.out.println("Long maxValue: " + Long.MAX_VALUE);
         System.out.println("Long minValue: " + Long.MIN_VALUE);
         System.out.println("Double maxValue: " + Double.MAX_VALUE);
-        System.out.println("Double minValue: " + Double.MIN_VALUE);
+        System.out.println("Double minValue: " + -Double.MAX_VALUE);
         System.out.println("Float maxValue: " + Float.MAX_VALUE);
-        System.out.println("Float minValue: " + Float.MIN_VALUE);
+        System.out.println("Float minValue: " + -Float.MAX_VALUE);
     }
 }
