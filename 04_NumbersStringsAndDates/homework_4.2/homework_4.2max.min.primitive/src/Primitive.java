@@ -1,5 +1,7 @@
 public class Primitive {
-    public static void main (String[] args){
+
+    public static void main(String[] args) {
+
         System.out.println("Integer maxValue: " + Integer.MAX_VALUE);
         System.out.println("Integer minValue: " + Integer.MIN_VALUE);
         System.out.println("Byte maxValue: " + Byte.MAX_VALUE);
@@ -12,5 +14,6 @@ public class Primitive {
         System.out.println("Double minValue: " + Double.MIN_VALUE);
         System.out.println("Float maxValue: " + Float.MAX_VALUE);
         System.out.println("Float minValue: " + Float.MIN_VALUE);
+        
     }
 }
