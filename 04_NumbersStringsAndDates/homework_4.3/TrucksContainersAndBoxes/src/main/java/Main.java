@@ -11,7 +11,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
 
-        for (int i = 0; i <= Integer.parseInt(boxes); i++) {
+        for (int i = 0; i < Integer.parseInt(boxes); i++) {
             if (i % (boxesInContainer * containersInTruck) == 0) {
                 truck++;
                 System.out.println("truck: " + truck);
