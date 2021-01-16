@@ -6,7 +6,7 @@ public class Main {
 
   public static String splitTextInToWords(String text) {
     //TODO реализуйте метод
-    return "";
+    return "text";
   }
 
 }
