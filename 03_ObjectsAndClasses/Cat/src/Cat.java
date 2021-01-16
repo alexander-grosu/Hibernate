@@ -10,7 +10,7 @@ public class Cat {
     public static final double MIN_WEIGHT = 1_000;
     public static final double MAX_WEIGHT = 9_000;
     private double feedDrinkWeight;
-    private double peeMeowLostWeight;
+    private double lostWeight;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -46,7 +46,7 @@ public class Cat {
         } else {
             isDead = false;
             weight = weight - 200;
-            peeMeowLostWeight = peeMeowLostWeight + 200;
+            lostWeight = lostWeight + 200;
             System.out.println("Meow");
         }
     }
@@ -77,19 +77,6 @@ public class Cat {
         }
     }
 
-    public void pee() {
-        /// условие - если обьект сломался , вышел из строя - мы не можем применять к нему методы, менять его параметры
-        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
-            isDead = true;
-            System.out.println("no Pee");
-        } else {
-            isDead = false;
-            weight = weight - 70;
-            peeMeowLostWeight = peeMeowLostWeight + 70;
-            System.out.println("Pee");
-        }
-    }
-
     public double getWeight() {
         return weight;
     }
@@ -99,7 +86,7 @@ public class Cat {
     }
 
     public double getLostWeight() {
-        return peeMeowLostWeight;
+        return lostWeight;
     }
 
     public String getStatus() {

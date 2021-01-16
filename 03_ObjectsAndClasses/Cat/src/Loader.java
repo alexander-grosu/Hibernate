@@ -1,5 +1,7 @@
 public class Loader {
     public static void main(String[] args) {
+
+        ///создаем новые обьекты
         Cat Mashka = new Cat();
         System.out.println("Mashka weight: " + Mashka.getWeight());
         Cat Barsik = new Cat();
@@ -7,10 +9,10 @@ public class Loader {
         Cat Murka = new Cat();
         System.out.println("Murka weight: " + Murka.getWeight());
         Cat Vasya = new Cat();
-        System.out.println("Vasya weight: " + Vasya.getWeight());
+        System.out.println("Vaska weight: " + Vasya.getWeight());
 
         ///создаем обьекты используя константы ENUM
-        Cat cat1 = new Cat("Pufik", Colors.BLACK);
+        Cat cat1 = new Cat("Tom", Colors.BLACK);
         System.out.println(cat1.getName() + " weight: " + cat1.getWeight() + ", color: " + cat1.catColors);
         Cat cat2 = new Cat("Garfield", Colors.RED);
         System.out.println(cat2.getName() + " weight: " + cat2.getWeight() + ", color: " + cat2.catColors);
@@ -23,8 +25,6 @@ public class Loader {
         System.out.println("Cats count is: " + Cat.getCount() + ", eyes cont: " + Cat.getEyeCount());
 
 
-
-
         ///применяем методы и следим за изменением веса обьектов
         Mashka.drink();
         System.out.println("Mashka weight: " + Mashka.getWeight());
@@ -33,11 +33,12 @@ public class Loader {
         Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
-        ///применяем метод PEE следим за весом обьекта и узнаем потерянный вес
-        Mashka.pee();
+        ///применяем метод следим за весом обьекта и узнаем потерянный вес
+        Mashka.meow();
         System.out.println("Mashka weight: " + Mashka.getWeight());
         Mashka.meow();
         System.out.println("Mashka weight: " + Mashka.getWeight());
+        ///проверяем какой вес потеряли обьект "Mashka" после применения методов
         System.out.println("Mashka lost weight: " + Mashka.getLostWeight());
 
         ///применяем метод FEED & MEOW в циклах до статуса EXPLODED & DEAD
@@ -53,7 +54,7 @@ public class Loader {
         }
 
         ///применяем методы к обьекту после того как он вышел из строя, сломался и смотрим на вес
-        Vasya.pee();
+        Vasya.feed();
         System.out.println("Vasya weight: " + Vasya.getWeight());
         Vasya.drink();
         System.out.println("Vasya weight: " + Vasya.getWeight());
@@ -67,23 +68,23 @@ public class Loader {
             Murka.meow();
             if (Murka.getWeight() < Cat.MIN_WEIGHT || Murka.getWeight() > Cat.MAX_WEIGHT) {
                 System.out.println("Murka: " + Murka.getStatus());
-                ///вес который потеряла Murka
+                ///вес который потерял обьект "Murka"
                 System.out.println("Murka lost weight: " + Murka.getLostWeight());
                 break;
             }
         }
 
-        ///применяем методы к обьекту после того как он вышел из строя, сломался и смотрим на вес
+        ///применяем методы к обьекту после того как он вышел из строя, сломался .... и смотрим на вес (вес не меняется, методы уже не меняют вес обьекта)
         Murka.meow();
         System.out.println("Murka weight: " + Murka.getWeight());
         Murka.drink();
         System.out.println("Murka weight: " + Murka.getWeight());
-        Murka.pee();
+        Murka.meow();
         System.out.println("Murka weight: " + Murka.getWeight());
         Murka.feed();
         System.out.println("Murka weight: " + Murka.getWeight());
 
-        ///поверям количество созданных обьектов и их глаз после того как несколько обьектов сломались, умерли, вышли из строя
+        ///проверяем количество созданных обьектов и количество их глаз после того как несколько обьектов сломались, умерли, вышли из строя
         System.out.println("Cats count is: " + Cat.getCount() + " , eyes count is: " + Cat.getEyeCount());
     }
 }
