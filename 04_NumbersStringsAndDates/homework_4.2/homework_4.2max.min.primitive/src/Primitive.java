@@ -13,9 +13,5 @@ public class Primitive {
         System.out.println("Double minValue: " + -Double.MAX_VALUE);
         System.out.println("Float maxValue: " + Float.MAX_VALUE);
         System.out.println("Float minValue: " + -Float.MAX_VALUE);
-<<<<<<< HEAD
-        
-=======
->>>>>>> c6ba4c7b812f582724b9d63fea0ef603ab55eea2
     }
 }
