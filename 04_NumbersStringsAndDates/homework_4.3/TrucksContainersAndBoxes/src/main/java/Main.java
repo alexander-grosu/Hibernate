@@ -7,7 +7,7 @@ public class Main {
         int containersInTruck = 12;
         int container = 0;
         int truck = 0;
-        System.out.println("Введите цифру - количество контейнеров:";
+        System.out.println("Введите цифру - количество контейнеров:");
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
 
