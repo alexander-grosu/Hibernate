@@ -10,7 +10,7 @@ public class GeometryCalculator {
     }
 
     public static boolean isTrianglePossible(double a, double b, double c) {
-        return ((a + b) > c && (a + c) > b && (b + c) > a);
+        return ((a + b) > c && (a + c) > b && (b + c) > a && a > 0 && b > 0 && c > 0);
     }
 
     // перед расчетом площади рекомендуется проверить возможен ли такой треугольник
