@@ -20,6 +20,7 @@ public class Main {
           countSpaces++;
         }
       }
+      /// на самом деле countOfNumbers это не только цифры, а все что != буквами, пробелами и тире
       int countNumbers = 0;
       for (int b = 0; b < input.length(); b++) {
         char ch = input.charAt(b);
