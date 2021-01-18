@@ -35,7 +35,7 @@ public class Alphabet {
             System.out.print(ch + "-" + code + ", ");
         }
         System.out.println();
-        System.out.println("Arabic numbers");
+        System.out.println("Arabic numberals");
         for (ch = '0'; ch <= '9'; ch++) {
             int code = ch;
             System.out.print(ch + " code:" + code + ", ");
