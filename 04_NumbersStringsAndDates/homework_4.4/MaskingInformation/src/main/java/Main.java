@@ -7,20 +7,17 @@ public class Main {
     public static String searchAndReplaceDiamonds(String text, String holder) {
         // TODO: реализовать метод, если в строке нет <> - вернуть строку без изменений
 
-        int x = text.indexOf('>');
-        int y = text.lastIndexOf('>');
-
         if (text.length() == 14) {
-            return "Пин код " + holder;
+            return text.substring(0, 8) + holder;
         }
         if (text.length() == 29) {
-            return "Номер паспорта " + holder + text.substring(x + 1);
+            return text.substring(0, 15) + holder + text.substring(26);
         }
         if (text.length() == 45) {
-            return "Номер кредитной карты " + holder + " " + text.substring(x + 2, x + 6) + " " + holder + " " + text.substring(y + 2);
+            return text.substring(0, 22) + holder + text.substring(28, 34) + holder + text.substring(40);
         }
         if (text.length() == 43) {
-            return "Номер кредитной карты " + holder + " " + text.substring(x + 2);
+            return text.substring(0, 22) + holder + text.substring(38);
         } else {
 
             return text;
