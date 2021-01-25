@@ -16,17 +16,18 @@ public class Main {
             String[] space = input.split(" ");
             if (space.length != 3) {
                 System.out.println("Введенная строка не является ФИО");
-                break;
+              break;
             }
             String surName = space[0];
             String name = space[1];
             String lastName = space[2];
+            if (surName.equals("\\d+") || name.equals("\\d+") || lastName.equals("\\d+")) {
+                System.out.println("Введенная строка не является ФИО");
+            }
 
-                System.out.println("Фамилия: " + surName);
-                System.out.println("Имя: " + name);
-                System.out.println("Отчество: " + lastName);
-
-
-    }}}
-
-
+            System.out.println("Фамилия: " + surName);
+            System.out.println("Имя: " + name);
+            System.out.println("Отчество: " + lastName);
+        }
+    }
+}
