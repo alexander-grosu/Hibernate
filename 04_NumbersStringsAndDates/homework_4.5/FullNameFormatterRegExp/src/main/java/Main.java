@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -13,21 +15,17 @@ public class Main {
             //TODO:напишите ваш код тут, результат вывести в консоль.
             //При невалидном ФИО вывести в консоль: Введенная строка не является ФИО
 
-            String[] space = input.split(" ");
-            if (space.length != 3) {
-                System.out.println("Введенная строка не является ФИО");
-              break;
-            }
-            String surName = space[0];
-            String name = space[1];
-            String lastName = space[2];
-            if (surName.equals("\\d+") || name.equals("\\d+") || lastName.equals("\\d+")) {
-                System.out.println("Введенная строка не является ФИО");
-            }
+            Pattern pattern = Pattern.compile("((^[А-Я]{1}[а-я]{1,}\\s[А-Я]{1}[а-я]{1,}\\s[А-Я]{1}[а-я]{1,}$)|(^[А-Я]{1}[а-я]{1,}\\-[А-Я]{1}[а-я]{1,}\\s[А-Я]{1}[а-я]{1,}\\s[А-Я]{1}[а-я]{1,}$))");
+            Matcher matcher = pattern.matcher(input);
+            while (matcher.find()){
 
-            System.out.println("Фамилия: " + surName);
-            System.out.println("Имя: " + name);
-            System.out.println("Отчество: " + lastName);
+                matcher.group().split("\\s","\n");
+
+                System.out.println(surname);
+                System.out.println(name);
+                System.out.println(lastname);
+            }
+            }
         }
     }
 }
