@@ -5,13 +5,12 @@ public class Main {
 
     public static void main(String[] args) {
         String salary;
-        salary = "Коля заработал 50000 рублей, Федя - 45800 рубля, а Саша - 23000 рублей";
+        salary = "John earned $55000, Max earned - $45700, Alex earned - $23000";
 
-        System.out.println("Сумма заработка друзей: " + calculateSalarySum(salary) + " руб.");
+        System.out.println("Total sum: " + calculateSalarySum(salary) + " $.");
     }
 
     public static int calculateSalarySum(String text) {
-        //TODO: реализуйте метод
         int sum = 0;
         Matcher m = Pattern.compile("\\d+").matcher(text);
         while (m.find()) {
