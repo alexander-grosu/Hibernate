@@ -19,7 +19,7 @@ public class Main {
             String regEx = "(^([А-Я]{1}[а-я]{1,}|[А-Я]{1}[а-я]{1,}\\-[А-Я]{1}[а-я]{1,})\\s+[А-Я]{1}[а-я]{1,}\\s+[А-Я]{1}[а-я]{1,}$)";
             Matcher m = Pattern.compile(regEx).matcher(input);
             if (m.matches()) {
-                String[] words = input.split("\\s");
+                String[] words = input.split("\\s+");
                 System.out.println("Фамилия: " + words[0]);
                 System.out.println("Имя: " + words[1]);
                 System.out.println("Отчество: " + words[2]);
