@@ -9,9 +9,7 @@ public class Main {
       if (input.equals("0")) {
         break;
       }
-      //TODO:напишите ваш код тут, результат вывести в консоль.
-      //При невалидном ФИО вывести в консоль: Введенная строка не является ФИО
-
+      /////////////////////////////////////////////////
       int spaceIndexOf = input.indexOf(" ");
       int spaceLastIndexOf = input.lastIndexOf(" ");
       int countSpaces = 0;
