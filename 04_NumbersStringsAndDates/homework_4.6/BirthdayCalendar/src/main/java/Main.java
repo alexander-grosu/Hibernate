@@ -1,19 +1,14 @@
-import net.sf.saxon.value.StringValue;
-
-import javax.management.StringValueExp;
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
 
         int day = 31;
-        int month = 12;
+        int month = 0;
         int year = 1990;
 
         System.out.println(collectBirthdays(year, month, day));
@@ -25,16 +20,18 @@ public class Main {
         //TODO реализуйте метод для построения строки в следующем виде
         //0 - 31.12.1990 - Mon
         //1 - 31.12.1991 - Tue
-        Calendar bDay = new GregorianCalendar(year,month,day);
-        Calendar today = new GregorianCalendar();
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy - EE");
         int i = 0;
-        while(bDay.getTime().before(today.getTime())){
-            bDay.add(Calendar.YEAR,1);
-            i++;
-        }
+        Calendar bDay = new GregorianCalendar(year, month, day);
+        Calendar today = GregorianCalendar.getInstance();
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy - EEE", Locale.ENGLISH);
+        System.out.println(i + " - " + df.format(bDay.getTime()));
 
-        return i+" - "+df.format(bDay.getTime());
+        while (bDay.getTime().before(today.getTime())) {
+            bDay.add(Calendar.YEAR, 1);
+            i++;
+            System.out.println(i + " - " + df.format(bDay.getTime()));
+        }
+        return "";
     }
 }
 
