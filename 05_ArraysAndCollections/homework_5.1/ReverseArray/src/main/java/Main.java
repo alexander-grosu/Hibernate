@@ -8,8 +8,6 @@ public class Main {
         String str = "Samuel Leroy Jackson";
         String[] massive = str.split("\\s+");
 
-        System.out.println(Arrays.toString(ReverseArray.reverse((line))));
-        System.out.println(Arrays.toString(ReverseArray.reverse((massive))));
-
+        System.out.println(Arrays.toString(ReverseArray.reverse((line))) + "\n" + Arrays.toString(ReverseArray.reverse((massive))));
     }
 }
