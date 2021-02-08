@@ -1,10 +1,17 @@
 public class Hospital {
+    public static final float minTemp = 32.0F;
+    public static final float maxTemp = 40.0F;
+    public static final float minNormalTemp = 36.2F;
+    public static final float maxNormalTemp = 36.9F;
+    float [] temperature;
 
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
-        //TODO: напишите метод генерации массива температур пациентов
-
-        return new float[0];
+        float [] temperature = new float[patientsCount];
+        for(int i =0; i < patientsCount; i++) {
+            temperature[i] = (float) (minTemp + ((maxTemp - minTemp)* Math.random()));
+        }
+        return temperature;
     }
 
     public static String getReport(float[] temperatureData) {
