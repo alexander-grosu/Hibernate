@@ -3,7 +3,6 @@ public class Hospital {
     public static final float maxTemp = 40.0F;
     public static final float minNormalTemp = 36.2F;
     public static final float maxNormalTemp = 36.9F;
-    float [] temperature;
 
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
