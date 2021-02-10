@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
+
 public class Hospital {
     public static final float minTemp = 32.0F;
     public static final float maxTemp = 40.0F;
