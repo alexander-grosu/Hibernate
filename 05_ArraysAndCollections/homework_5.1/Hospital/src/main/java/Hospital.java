@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -13,7 +14,7 @@ public class Hospital {
 
         float[] temperature = new float[patientsCount];
         for (int i = 0; i < patientsCount; i++) {
-            temperature[i] = (float) (minTemp + ((maxTemp - minTemp) * Math.random()));
+            temperature[i] = (float) (minTemp + (maxTemp - minTemp) * Math.random());
         }
         return temperature;
     }
@@ -30,6 +31,7 @@ public class Hospital {
         int k = 0;
         float temperaturaMedie = 0;
         int bonneSante = 0;
+        String t = "";
         for (int i = 0; i < temperatureData.length; i++) {
             sum += temperatureData[i];
             k++;
@@ -38,9 +40,12 @@ public class Hospital {
                 bonneSante++;
             }
         }
-        String temp = Arrays.toString(temperatureData);
 
-        String report = "Температуры пациентов: " + temp +
+
+        String value = Arrays.toString(temperatureData);
+        String elements = value.replaceAll(("[^\\d\\d\\.\\d\\s]"),"");
+
+        String report = "Температуры пациентов: " + elements +
                 "\nСредняя температура: " + Math.round(temperaturaMedie * 100.0) / 100.0 +
                 "\nКоличество здоровых: " + bonneSante;
 
