@@ -31,7 +31,6 @@ public class Hospital {
         int k = 0;
         float temperaturaMedie = 0;
         int bonneSante = 0;
-        String t = "";
         for (int i = 0; i < temperatureData.length; i++) {
             sum += temperatureData[i];
             k++;
