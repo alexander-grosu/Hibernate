@@ -21,7 +21,7 @@ public class Hospital {
         String txtTemp = "";
         for (int i = 0; i < temperatureData.length; i++) {
             sum += temperatureData[i];
-            txtTemp += Math.round(temperatureData[i] * 100.0) / 100.0 + " ";
+            txtTemp += Math.round(temperatureData[i] * 10.0) / 10.0 + " ";
             k++;
             temperaturaMedie = sum / k;
             if (Math.round(temperatureData[i] * 100.0) / 100.0 > minNormalTemp && Math.round(temperatureData[i] * 100.0) / 100.0 < maxNormalTemp) {
