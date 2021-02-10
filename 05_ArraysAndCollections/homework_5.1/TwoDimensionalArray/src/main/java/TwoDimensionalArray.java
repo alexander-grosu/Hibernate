@@ -8,16 +8,19 @@ public class TwoDimensionalArray {
         // [X,  , X]
         // [ , X,  ]
         // [X,  , X]
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-
-                    System.out.print(symbol);
-                }
-                System.out.println();
+        char [][] chessBoard = new char[size][size];
+        for(int i = 0; i < size; i++) {
+            if(i == size-1-i) chessBoard[j] = symbol; {
+                System.out.print(symbol);
+                continue;
             }
+            int temp = chessBoard[i][i];
+            chessBoard[i][i] = chessBoard[i][size-1-i];
+            chessBoard[i][size-1-i] = (char) temp;
+            System.out.println();
+        }
 
-
-            return new char[symbol][symbol];
-
+       return chessBoard;
     }
+
 }
