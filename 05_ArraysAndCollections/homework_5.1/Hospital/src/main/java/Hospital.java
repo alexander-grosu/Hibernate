@@ -14,13 +14,6 @@ public class Hospital {
     }
 
     public static String getReport(float[] temperatureData) {
-
-
-        /*
-        TODO: Напишите код, который выводит среднюю температуру по больнице,количество здоровых пациентов,
-            а также температуры всех пациентов.
-        */
-
         float sum = 0;
         int k = 0;
         float temperaturaMedie = 0;
