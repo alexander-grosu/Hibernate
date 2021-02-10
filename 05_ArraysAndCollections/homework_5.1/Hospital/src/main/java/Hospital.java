@@ -26,11 +26,23 @@ public class Hospital {
             а также температуры всех пациентов.
         */
 
+        float sum=0;
+        int k =0;
+        float averageTemp =0;
+        int z =0;
+        for (int i =0; i< temperatureData.length; i++){
+            sum+=temperatureData[i];
+            k++;
+            averageTemp = sum/k;
+            if(Math.round(temperatureData[i]*100.0)/100.0 > minNormalTemp && Math.round(temperatureData[i]*100.0)/100.0 < maxNormalTemp){
+                z++;
+            }
+        }
         String temp = Arrays.toString(temperatureData);
 
         String report = "Температуры пациентов: " + temp +
-                "\nСредняя температура: " + 0 +
-                "\nКоличество здоровых: " + 0;
+                "\nСредняя температура: " + Math.round(averageTemp*100.0)/100.0 +
+                "\nКоличество здоровых: " + z;
 
         return report;
     }

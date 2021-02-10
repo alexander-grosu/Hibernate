@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        float[] temperatureData = Hospital.generatePatientsTemperatures(0);
-        System.out.println(Hospital.getReport(temperatureData));
+        float[] temperatureDates = Hospital.generatePatientsTemperatures(77);
+        System.out.println(Hospital.getReport(temperatureDates));
         //Пример вывода в консоль:
         //Температуры пациентов: 36.7 38.9 34.7
         //Средняя температура: 36.76
