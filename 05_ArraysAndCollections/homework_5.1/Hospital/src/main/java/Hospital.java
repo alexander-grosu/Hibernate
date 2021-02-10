@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+
 public class Hospital {
     public static final float minTemp = 32.0F;
     public static final float maxTemp = 40.0F;
@@ -28,7 +29,10 @@ public class Hospital {
         int k = 0;
         float temperaturaMedie = 0;
         int bonneSante = 0;
+<<<<<<< HEAD
         String txtTemp ="";
+=======
+>>>>>>> df4059b724afbaba1812f2f5dc921933fde4a5c1
         for (int i = 0; i < temperatureData.length; i++) {
             sum += temperatureData[i];
             txtTemp += Math.round(temperatureData[i] * 100.0) / 100.0 + " ";
