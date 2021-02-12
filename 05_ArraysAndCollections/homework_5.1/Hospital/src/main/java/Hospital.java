@@ -17,27 +17,32 @@ public class Hospital {
 
     public static String getReport(float[] temperatureData) {
         float sum = 0;
-        int k = 0;
-        float temperaturaMedie = 0;
-        int bonneSante = 0;
+        int patientCount = 0;
+        float averageTemp = 0;
+        int healthCount = 0;
+        double scale = Math.pow(10, 2);
 
         StringBuilder txtTemp = new StringBuilder();
-        for (float temperatureDatum : temperatureData) {
-            DecimalFormat decimalFormat = new DecimalFormat( "#.#" );
-            String tempDat1 = decimalFormat.format(temperatureDatum);
-            //String tempDat2 = String.format("%.2f", temperatureDatum);
-            txtTemp.append(tempDat1).append(" ");
-            k++;
-            sum += temperatureDatum;
-            temperaturaMedie = sum / k;
+        for (float tempElements : temperatureData) {
+            //DecimalFormat decimalFormat = new DecimalFormat( "#.0" );
+            //String tempDat1 = decimalFormat.format(tempElements);
+            String tempDat2 = String.format("%.1f", tempElements);
+            txtTemp.append(tempDat2).append(" ");
+            patientCount++;
+            sum += tempElements;
+            averageTemp = sum / patientCount;
 
-            if (temperatureDatum > MIN_NORMAL_TEMP && temperatureDatum < MAX_NORMAL_TEMP) {
-                bonneSante++;
+            if (Math.round(tempElements * scale) / scale > MIN_NORMAL_TEMP && Math.round(tempElements * scale) / scale < MAX_NORMAL_TEMP) {
+                healthCount++;
             }
         }
-        String report = "Температуры пациентов: " + txtTemp.toString().trim() +
-                "\nСредняя температура: " + Math.round(temperaturaMedie * 100.0) / 100.0 +
-                "\nКоличество здоровых: " + bonneSante;
+
+        String tempOfPatients = txtTemp.toString().trim().replaceAll("\\,", "\\.");
+        double averageTemperature = Math.round(averageTemp * scale) / scale;
+
+        String report = "Температуры пациентов: " + tempOfPatients +
+                "\nСредняя температура: " + averageTemperature +
+                "\nКоличество здоровых: " + healthCount;
 
         return report;
     }
