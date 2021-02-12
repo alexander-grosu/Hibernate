@@ -37,7 +37,7 @@ public class Hospital {
         }
 
         String tempOfPatients = txtTemp.toString().trim().replaceAll("\\,", "\\.");
-        double scale = Math.pow(10,2);
+        double scale = Math.pow(10, 2);
         double averageTemperature = Math.round(averageTemp * scale) / scale;
 
         String report = "Температуры пациентов: " + tempOfPatients +
