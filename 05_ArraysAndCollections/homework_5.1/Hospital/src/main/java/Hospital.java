@@ -20,7 +20,6 @@ public class Hospital {
         int patientCount = 0;
         float averageTemp = 0;
         int healthCount = 0;
-        double scale = Math.pow(10, 2);
 
         StringBuilder txtTemp = new StringBuilder();
         for (float tempElements : temperatureData) {
@@ -32,12 +31,13 @@ public class Hospital {
             sum += tempElements;
             averageTemp = sum / patientCount;
 
-            if (Math.round(tempElements * scale) / scale > MIN_NORMAL_TEMP && Math.round(tempElements * scale) / scale < MAX_NORMAL_TEMP) {
+            if (tempElements >= MIN_NORMAL_TEMP && tempElements <= MAX_NORMAL_TEMP) {
                 healthCount++;
             }
         }
 
         String tempOfPatients = txtTemp.toString().trim().replaceAll("\\,", "\\.");
+        double scale = Math.pow(10,2);
         double averageTemperature = Math.round(averageTemp * scale) / scale;
 
         String report = "Температуры пациентов: " + tempOfPatients +
