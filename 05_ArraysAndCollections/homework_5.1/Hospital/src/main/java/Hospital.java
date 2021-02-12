@@ -1,14 +1,16 @@
+import java.text.DecimalFormat;
+
 public class Hospital {
-    public static final float minTemp = 32.0F;
-    public static final float maxTemp = 40.0F;
-    public static final float minNormalTemp = 36.2F;
-    public static final float maxNormalTemp = 36.9F;
+    public static final float MIN_TEMP = 32.0F;
+    public static final float MAX_TEMP = 40.0F;
+    public static final float MIN_NORMAL_TEMP = 36.2F;
+    public static final float MAX_NORMAL_TEMP = 36.9F;
 
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
         float[] temperature = new float[patientsCount];
         for (int i = 0; i < patientsCount; i++) {
-            temperature[i] = (float) (minTemp + (maxTemp - minTemp) * Math.random());
+            temperature[i] = (float) (MIN_TEMP + (MAX_TEMP - MIN_TEMP) * Math.random());
         }
         return temperature;
     }
@@ -18,17 +20,22 @@ public class Hospital {
         int k = 0;
         float temperaturaMedie = 0;
         int bonneSante = 0;
-        String txtTemp = "";
-        for (int i = 0; i < temperatureData.length; i++) {
-            sum += temperatureData[i];
-            txtTemp += Math.round(temperatureData[i] * 10.0) / 10.0 + " ";
+
+        StringBuilder txtTemp = new StringBuilder();
+        for (float temperatureDatum : temperatureData) {
+            DecimalFormat decimalFormat = new DecimalFormat( "#.#" );
+            String tempDat1 = decimalFormat.format(temperatureDatum);
+            //String tempDat2 = String.format("%.2f", temperatureDatum);
+            txtTemp.append(tempDat1).append(" ");
             k++;
+            sum += temperatureDatum;
             temperaturaMedie = sum / k;
-            if (Math.round(temperatureData[i] * 100.0) / 100.0 > minNormalTemp && Math.round(temperatureData[i] * 100.0) / 100.0 < maxNormalTemp) {
+
+            if (temperatureDatum > MIN_NORMAL_TEMP && temperatureDatum < MAX_NORMAL_TEMP) {
                 bonneSante++;
             }
         }
-        String report = "Температуры пациентов: " + txtTemp.trim() +
+        String report = "Температуры пациентов: " + txtTemp.toString().trim() +
                 "\nСредняя температура: " + Math.round(temperaturaMedie * 100.0) / 100.0 +
                 "\nКоличество здоровых: " + bonneSante;
 
