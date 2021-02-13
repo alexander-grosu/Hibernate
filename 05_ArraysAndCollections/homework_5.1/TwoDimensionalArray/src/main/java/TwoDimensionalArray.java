@@ -7,14 +7,13 @@ public class TwoDimensionalArray {
         // [X,  , X]
         // [ , X,  ]
         // [X,  , X]
-        char [][] chessBoard = new char[size][size];
+        char[][] chessBoard = new char[size][size];
 
-        for (int a =0; a < chessBoard.length; a++){
-            for (int b =0; b < chessBoard[0].length;b++){
-                if( a == b){
+        for (int a = 0; a < chessBoard.length; a++) {
+            for (int b = 0; b < chessBoard[0].length; b++) {
+                if (a == b) {
                     chessBoard[a][b] = symbol;
-                }
-                else if (a == chessBoard[0].length-1 - b){
+                } else if (a == chessBoard[0].length - 1 - b) {
                     chessBoard[a][b] = symbol;
                 } else {
                     chessBoard[a][b] = ' ';
