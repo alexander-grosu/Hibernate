@@ -15,6 +15,10 @@ public class TwoDimensionalArray {
                     chessBoard[a][b] = symbol;
                 } else if (a == chessBoard[0].length - 1 - b) {
                     chessBoard[a][b] = symbol;
+                //} else if (a == chessBoard.length / 2) {
+                    //chessBoard[a][b] = symbol;
+                //} else if (b == chessBoard[0].length / 2) {
+                    //chessBoard[a][b] = symbol;
                 } else {
                     chessBoard[a][b] = ' ';
                 }
