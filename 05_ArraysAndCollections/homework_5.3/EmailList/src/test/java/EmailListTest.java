@@ -70,6 +70,4 @@ class EmailListTest {
 
         assertEquals(List.of(secondEmail, thirdEmail, firstEmail), emailList.getSortedEmails());
     }
-
-
 }
