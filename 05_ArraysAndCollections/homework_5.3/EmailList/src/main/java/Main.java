@@ -12,9 +12,9 @@ public class Main {
         System.out.println("чтобы увидеть список команд введите HELP");
         command = scanner.nextLine();
         /*  регулярка "regexEmail" очень длинная но зато можно вводить 3 формата e-mail
-        *  1. abcdef@yandex.ru
-        *  2. abcdef-abcdef@yandex.ru
-        *  3. abcdef.abcdef@yandex.ru  */
+         *  1. abcdef@yandex.ru
+         *  2. abcdef-abcdef@yandex.ru
+         *  3. abcdef.abcdef@yandex.ru  */
         String regexEmail = "^ADD\\s(\\w+\\@\\w+\\.\\w+||\\w+\\-\\w+\\@\\w+\\.\\w+||\\w+\\.\\w+\\@\\w+\\.\\w+)$";
         String regexList = "^LIST$"; // list output command
         String regexExit = "^EXIT$"; // exit
@@ -44,8 +44,8 @@ public class Main {
                         "\n EXIT ->  завершает работу программы ");
                 command = scanner.nextLine();
 
-            } else if (Pattern.compile(regexDelete).matcher(command).matches())  {
-                e_mail = command.replaceAll("^DELETE\\s+","").toLowerCase();
+            } else if (Pattern.compile(regexDelete).matcher(command).matches()) {
+                e_mail = command.replaceAll("^DELETE\\s+", "").toLowerCase();
                 emailListExemplar.delete(e_mail);
                 command = scanner.nextLine();
 
