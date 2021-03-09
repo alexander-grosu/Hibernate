@@ -19,7 +19,7 @@ public class Main {
         String regexList = "^LIST$"; // list output command
         String regexExit = "^EXIT$"; // exit
         String regexHelp = "^HELP$"; // help
-        String regexDelete = "^DELETE\\s+([A-Za-z]+||[A-Za-z]+\\-[A-Za-z]+||[A-Za-z]+\\.[A-Za-z]+)\\@[A-Za-z]+\\.[A-Za-z]+$";  //help
+        String regexDelete = "^DELETE\\s+([A-Za-z]+||[A-Za-z]+\\-[A-Za-z]+||[A-Za-z]+\\.[A-Za-z]+)\\@[A-Za-z]+\\.[A-Za-z]+$";  //delete
 
         while (true) {
 
