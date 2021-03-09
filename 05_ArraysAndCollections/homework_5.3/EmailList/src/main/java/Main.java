@@ -29,7 +29,7 @@ public class Main {
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(regexList).matcher(command).matches()) {
-                emailListExemplar.getSortedEmails();
+                emailListExemplar.printList();
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(regexExit).matcher(command).matches()) {

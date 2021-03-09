@@ -7,7 +7,6 @@ public class EmailList {
 
     public void add(String e_mail) {
         // TODO: валидный формат email добавляется
-
         String regexEmail = "^([A-Za-z]+||[A-Za-z]+\\-[A-Za-z]+||[A-Za-z]+\\.[A-Za-z]+)\\@[A-Za-z]+\\.[A-Za-z]+$";
         if (Pattern.compile(regexEmail).matcher(e_mail).matches()) {
             if (emailList.contains(e_mail.toLowerCase())) {
@@ -21,7 +20,6 @@ public class EmailList {
         }
     }
 
-
     public void delete(String e_mail) {
         if (emailList.isEmpty()) {
             System.out.println("список пуст! чтобы продлжить введите HELP");
@@ -33,15 +31,18 @@ public class EmailList {
         }
     }
 
-    public List<String> getSortedEmails() {
-        List<String> mainList = new ArrayList<String>();
-        mainList.addAll(emailList);
+    public void printList() {
         if (emailList.isEmpty()) {
             System.out.println("список пуст! чтобы продолжить введите HELP");
         } else {
             emailList.forEach(emails -> System.out.println(emails));
-            //System.out.println(emailList); вывод списка адресов в виде массива
         }
+    }
+
+    public List<String> getSortedEmails() {
+        List<String> mainList = new ArrayList<String>();
+        mainList.addAll(emailList);
+
         return mainList;
     }
 }
