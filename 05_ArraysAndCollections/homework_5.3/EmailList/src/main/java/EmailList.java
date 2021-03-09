@@ -6,7 +6,7 @@ public class EmailList {
     TreeSet<String> emailList = new TreeSet<>();
 
     public void add(String e_mail) {
-        // TODO: валидный формат email добавляется
+       
         String regexEmail = "^([A-Za-z]+||[A-Za-z]+\\-[A-Za-z]+||[A-Za-z]+\\.[A-Za-z]+)\\@[A-Za-z]+\\.[A-Za-z]+$";
         if (Pattern.compile(regexEmail).matcher(e_mail).matches()) {
             if (emailList.contains(e_mail.toLowerCase())) {
