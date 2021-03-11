@@ -41,14 +41,16 @@ public class PhoneBook {
     }
 
     public void printContactByName(String name) {
-        for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
-            if (name.equals(entry.getValue())) {
-                if (mapPhone.containsValue(name)) {
-                    System.out.println(name + " - " + entry.getKey());
-                } else {
-                    System.out.println("контакта с таким именим в списке нет");
+        if (mapPhone.containsValue(name)) {
+            for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
+                if (name.equals(entry.getValue())) {
+                    if (mapPhone.containsValue(name)) {
+                        System.out.println(name + " - " + entry.getKey());
+                    }
                 }
             }
+        } else {
+            System.out.println("контакта с таким именим в списке нет");
         }
     }
 
