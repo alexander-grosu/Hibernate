@@ -46,7 +46,7 @@ public class PhoneBook {
                 if (mapPhone.containsValue(name)) {
                     System.out.println(name + " - " + entry.getKey());
                 } else {
-                    System.out.println("контакта с таким именим нет");
+                    System.out.println("контакта с таким именим в списке нет");
                 }
             }
         }
