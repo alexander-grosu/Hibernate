@@ -6,6 +6,10 @@ public class EmailList {
     TreeSet<String> emailList = new TreeSet<>();
 
     public void add(String e_mail) {
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 38d47362949f30f7fed4422c246f12bf5c1a13b1
         String regexEmail = "^([A-Za-z]+||[A-Za-z]+\\-[A-Za-z]+||[A-Za-z]+\\.[A-Za-z]+)\\@[A-Za-z]+\\.[A-Za-z]+$";
         if (Pattern.compile(regexEmail).matcher(e_mail).matches()) {
             if (emailList.contains(e_mail.toLowerCase())) {
