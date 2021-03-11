@@ -14,7 +14,7 @@ public class PhoneBook {
             if (mapPhone.containsKey(phone)) {
                 mapPhone.remove(phone);
             }
-                mapPhone.put(phone, name);
+            mapPhone.put(phone, name);
             System.out.println("контакт сохранен");
         } else {
             System.out.println("имя или номер введен некорректно");
@@ -24,7 +24,7 @@ public class PhoneBook {
     public void printList() {
         for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
             //newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
-            
+
             System.out.println(mapToSet.getValue() + " - " + mapToSet.getKey()); /// это выводит элементы мэп
         }
 //        for (String printSetElements : newSet) {
@@ -32,11 +32,23 @@ public class PhoneBook {
 //        }
     }
 
-    public void printNameByPhone(String phone) {
+    public void printContactByPhone(String phone) {
         if (mapPhone.containsKey(phone)) {
             System.out.println(mapPhone.get(phone) + " - " + phone);
         } else {
             System.out.println("контакта с таким номером в списке нет");
+        }
+    }
+
+    public void printContactByName(String name) {
+        for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
+            if (name.equals(entry.getValue())) {
+                if (mapPhone.containsValue(name)) {
+                    System.out.println(name + " - " + entry.getKey());
+                } else {
+                    System.out.println("контакта с таким именим нет");
+                }
+            }
         }
     }
 
@@ -53,13 +65,12 @@ public class PhoneBook {
     public String getPhonesByName(String name) {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найден - вернуть пустой TreeSet
-        for (Map.Entry entry : mapPhone.entrySet()) {
-            if (name.equalsIgnoreCase((String) entry.getValue())) {
-                newSet.add((String) entry.getKey());
+        for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
+            if (name.equals(entry.getValue())) {
+                return name + " - " + entry.getKey();
             }
-            return "";
         }
-        return "";
+        return null;
     }
 
 

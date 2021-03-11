@@ -57,7 +57,7 @@ public class Main {
 
             } else if (Pattern.compile(getPhoneByName).matcher(command).matches()) {
                 name = command.replaceAll("^GET\\s+", "");
-                contacts.getPhonesByName(name);
+                contacts.printContactByName(name);
                 System.out.println("введите номер, имя или команду:");
                 command = scanner.nextLine();
 
@@ -76,7 +76,7 @@ public class Main {
 
             } else if (Pattern.compile(getPhoneByNumber).matcher(command).matches()) {
                 number = command.replaceAll("^GET\\s+", "");
-                contacts.printNameByPhone(number);
+                contacts.printContactByPhone(number);
                 System.out.println("введите номер, имя или команду:");
                 command = scanner.nextLine();
 
