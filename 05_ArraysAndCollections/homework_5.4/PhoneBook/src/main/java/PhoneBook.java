@@ -70,7 +70,7 @@ public class PhoneBook {
                 return name + " - " + entry.getKey();
             }
         }
-        return null;
+        return "";
     }
 
 
