@@ -44,9 +44,7 @@ public class PhoneBook {
         if (mapPhone.containsValue(name)) {
             for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
                 if (name.equals(entry.getValue())) {
-                    if (mapPhone.containsValue(name)) {
-                        System.out.println(name + " - " + entry.getKey());
-                    }
+                    System.out.println(name + " - " + entry.getKey());
                 }
             }
         } else {
