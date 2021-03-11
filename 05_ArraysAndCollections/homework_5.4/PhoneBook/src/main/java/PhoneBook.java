@@ -2,8 +2,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class PhoneBook {
-    Map<String, String> mapPhone = new TreeMap<>();
-    private Set<String> newSet = new TreeSet<String>();
+    Map<String, String> mapPhone = new HashMap<>();
+    private Set<String> newSet = new TreeSet<>();
 
     public void addContact(String phone, String name) {
         // проверьте корректность формата имени и телефона
@@ -24,6 +24,7 @@ public class PhoneBook {
     public void printList() {
         for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
             //newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
+            
             System.out.println(mapToSet.getValue() + " - " + mapToSet.getKey()); /// это выводит элементы мэп
         }
 //        for (String printSetElements : newSet) {

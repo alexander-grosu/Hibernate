@@ -70,7 +70,8 @@ public class Main {
                         "\n GET(space) + (number)  -> выводит контакт по номеру" +
                         "\n LIST  -> выводит список контактов" +
                         "\n (number)/ответ + (name)  -> добавляет контакт" +
-                        "\n (name)/ответ + (number)  -> добавляет контакт");
+                        "\n (name)/ответ + (number)  -> добавляет контакт" +
+                        "\n EXIT  -> завершение работы");
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(getPhoneByNumber).matcher(command).matches()) {
