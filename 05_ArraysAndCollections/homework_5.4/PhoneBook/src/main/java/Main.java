@@ -5,8 +5,8 @@ public class Main {
     public static String name;
     public static String number;
     public static String command;
-    public static final String regexName = "^(([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,15}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\-[А-Я]{1}[а-я]{1,14}))$";
-    public static final String regexNumber = "^[0-9]{11}$";
+    public static String regexName = "^(([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,15}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\-[А-Я]{1}[а-я]{1,14}))$";
+    public static final String regexNumber = "^[0-9]+$";
     public static final String getPhoneByName = "^GET\\s+(([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,15}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\-[А-Я]{1}[а-я]{1,14}))$";
     public static final String getPhoneByNumber = "^GET\\s+[0-9]{11}$";
     public static final String listRegEx = "^LIST$";
@@ -21,9 +21,8 @@ public class Main {
 
         while (true) {
             if (Pattern.compile(regexName).matcher(command).matches()) {
-                //if (Pattern.compile(regexName).matcher(command).matches()) {
                 name = command;
-                if (contacts.phoneContacts.containsValue(name)) {
+                if (contacts.mapPhone.containsValue(name)) {
                     System.out.println("абонент с именим '" + name + "' уже есть в контактах");
                     System.out.println("введите новый номер для абонента '" + name + "'");
                 } else {
@@ -40,9 +39,9 @@ public class Main {
 
             } else if (Pattern.compile(regexNumber).matcher(command).matches()) {
                 number = command;
-                if (contacts.phoneContacts.containsKey(number)) {
+                if (contacts.mapPhone.containsKey(number)) {
                     System.out.println("абонент с номером '" + number + "' уже есть в контактах");
-                    System.out.println("введите новое имя для контакта '" + contacts.phoneContacts.get(number) + " - " + number + "'");
+                    System.out.println("введите новое имя для контакта '" + contacts.mapPhone.get(number) + " - " + number + "'");
                 } else {
                     System.out.println("такого номера в телефонной книге нет");
                     System.out.println("введите имя для номера '" + number + "'");
@@ -63,10 +62,10 @@ public class Main {
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(listRegEx).matcher(command).matches()) {
-                contacts.getAllContacts();
+                contacts.printList();
                 command = scanner.nextLine();
 
-            }else if (Pattern.compile(helpRegEx).matcher(command).matches()) {
+            } else if (Pattern.compile(helpRegEx).matcher(command).matches()) {
                 System.out.println(" GET(space) + (name)  -> выводит контакт по имени" +
                         "\n GET(space) + (number)  -> выводит контакт по номеру" +
                         "\n LIST  -> выводит список контактов" +
@@ -76,11 +75,11 @@ public class Main {
 
             } else if (Pattern.compile(getPhoneByNumber).matcher(command).matches()) {
                 number = command.replaceAll("^GET\\s+", "");
-                contacts.getNameByPhone(number);
+                contacts.printNameByPhone(number);
                 System.out.println("введите номер, имя или команду:");
                 command = scanner.nextLine();
 
-            } else if (Pattern.compile(helpRegEx).matcher(command).matches()) {
+            } else if (Pattern.compile(exitRegEx).matcher(command).matches()) {
                 System.out.println("работа программы завершена");
                 break;
 

@@ -1,54 +1,77 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class PhoneBook {
-    Map<String, String> phoneContacts = new TreeMap<>();
+    Map<String, String> mapPhone = new TreeMap<>();
+    private Set<String> newSet = new TreeSet<String>();
 
     public void addContact(String phone, String name) {
         // проверьте корректность формата имени и телефона
         // если такой номер уже есть в списке, то перезаписать имя абонента
-        if (phoneContacts.containsKey(phone)) {
-            phoneContacts.remove(phone);
-            phoneContacts.put(phone, name);
+        String regexName = "^(([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,15}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\-[А-Я]{1}[а-я]{1,14}))$";
+        String regexNumber = "^[0-9]{11}$";
+        if (Pattern.compile(regexName).matcher(name).matches() && Pattern.compile(regexNumber).matcher(phone).matches()) {
+            if (mapPhone.containsKey(phone)) {
+                mapPhone.remove(phone);
+            }
+                mapPhone.put(phone, name);
+            System.out.println("контакт сохранен");
         } else {
-            phoneContacts.put(phone, name);
+            System.out.println("имя или номер введен некорректно");
         }
-        System.out.println("контакт сохранен");
+    }
+
+    public void printList() {
+        for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
+            //newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
+            System.out.println(mapToSet.getValue() + " - " + mapToSet.getKey()); /// это выводит элементы мэп
+        }
+//        for (String printSetElements : newSet) {
+//            System.out.println(printSetElements);
+//        }
+    }
+
+    public void printNameByPhone(String phone) {
+        if (mapPhone.containsKey(phone)) {
+            System.out.println(mapPhone.get(phone) + " - " + phone);
+        } else {
+            System.out.println("контакта с таким номером в списке нет");
+        }
     }
 
     public String getNameByPhone(String phone) {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найдены - вернуть пустую строку
-        if (phoneContacts.containsKey(phone)) {
-            System.out.println(phoneContacts.get(phone) + " - " + phone);
+        if (mapPhone.containsKey(phone)) {
+            return mapPhone.get(phone) + " - " + phone;
         } else {
-            System.out.println("указанный контакт отсутствует в списке");
+            return "";
         }
-        return "";
-
     }
 
     public String getPhonesByName(String name) {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найден - вернуть пустой TreeSet
-        if (phoneContacts.containsValue(name)) {
-            System.out.println(phoneContacts.get(name));
-        } else {
-            System.out.println("указанный контакт отсутствует в списке");
+        for (Map.Entry entry : mapPhone.entrySet()) {
+            if (name.equalsIgnoreCase((String) entry.getValue())) {
+                newSet.add((String) entry.getKey());
+            }
+            return "";
         }
-        return name + " - " + phoneContacts.get(name);
+        return "";
     }
 
 
-    public Set<String> getAllContacts() {
+    public Object getAllContacts() {
         // формат одного контакта "Имя - Телефон"
         // если контактов нет в телефонной книге - вернуть пустой TreeSet
-        if (phoneContacts.isEmpty()) {
-            System.out.println("список пуст");
-        } else {
-            for (Map.Entry<String, String> contacts : phoneContacts.entrySet()) {
-                System.out.println(contacts.getValue() + " - " + contacts.getKey());
+        if (!mapPhone.isEmpty()) {
+            for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
+                newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
             }
+            return newSet;
+        } else {
+            return new TreeSet<>();
         }
-        return new TreeSet<>();
     }
 }

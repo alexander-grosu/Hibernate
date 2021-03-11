@@ -16,7 +16,7 @@ public class Main {
             indexOpen = result.indexOf('<');
             indexClose = result.indexOf('>');
         }
-
+        
         return result;
     }
 }
