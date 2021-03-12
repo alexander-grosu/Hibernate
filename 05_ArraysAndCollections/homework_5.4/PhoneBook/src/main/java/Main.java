@@ -57,12 +57,18 @@ public class Main {
 
             } else if (Pattern.compile(getPhoneByName).matcher(command).matches()) {
                 name = command.replaceAll("^GET\\s+", "");
-                contacts.printContactByName(name);
+                contacts.getPhonesByName(name);
+                System.out.println("введите номер, имя или команду:");
+                command = scanner.nextLine();
+
+            } else if (Pattern.compile(getPhoneByNumber).matcher(command).matches()) {
+                number = command.replaceAll("^GET\\s+", "");
+                contacts.getNameByPhone(number);
                 System.out.println("введите номер, имя или команду:");
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(listRegEx).matcher(command).matches()) {
-                contacts.printList();
+                contacts.getAllContacts();
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(helpRegEx).matcher(command).matches()) {
@@ -72,12 +78,6 @@ public class Main {
                         "\n (number)/ответ + (name)  -> добавляет контакт" +
                         "\n (name)/ответ + (number)  -> добавляет контакт" +
                         "\n EXIT  -> завершение работы");
-                command = scanner.nextLine();
-
-            } else if (Pattern.compile(getPhoneByNumber).matcher(command).matches()) {
-                number = command.replaceAll("^GET\\s+", "");
-                contacts.printContactByPhone(number);
-                System.out.println("введите номер, имя или команду:");
                 command = scanner.nextLine();
 
             } else if (Pattern.compile(exitRegEx).matcher(command).matches()) {

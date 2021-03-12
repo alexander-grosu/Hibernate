@@ -21,69 +21,75 @@ public class PhoneBook {
         }
     }
 
-    public void printList() {
-        for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
-            //newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
-
-            System.out.println(mapToSet.getValue() + " - " + mapToSet.getKey()); /// это выводит элементы мэп
-        }
-//        for (String printSetElements : newSet) {
-//            System.out.println(printSetElements);
-//        }
-    }
-
-    public void printContactByPhone(String phone) {
-        if (mapPhone.containsKey(phone)) {
-            System.out.println(mapPhone.get(phone) + " - " + phone);
-        } else {
-            System.out.println("контакта с таким номером в списке нет");
-        }
-    }
-
-    public void printContactByName(String name) {
-        if (mapPhone.containsValue(name)) {
-            for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
-                if (name.equals(entry.getValue())) {
-                    System.out.println(name + " - " + entry.getKey());
-                }
-            }
-        } else {
-            System.out.println("контакта с таким именим в списке нет");
-        }
-    }
-
     public String getNameByPhone(String phone) {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найдены - вернуть пустую строку
+        String nameByPhone = "";
         if (mapPhone.containsKey(phone)) {
-            return mapPhone.get(phone) + " - " + phone;
+            nameByPhone = mapPhone.get(phone) + " - " + phone;
+            System.out.println(nameByPhone);
+            return nameByPhone;
         } else {
-            return "";
+            System.out.println("контакта с таким номером в списке нет");
+            return nameByPhone;
         }
     }
 
-    public String getPhonesByName(String name) {
+    public Set<String> getPhonesByName(String name) {
         // формат одного контакта "Имя - Телефон"
         // если контакт не найден - вернуть пустой TreeSet
-        for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
-            if (name.equals(entry.getValue())) {
-                return name + " - " + entry.getKey();
+        Set<String> setPhoneByName = new TreeSet<>();
+        String stringKey = "";
+        if (mapPhone.containsValue(name)) {
+            for (Map.Entry<String, String> entry : mapPhone.entrySet()) { // Преобразует Map в Entry
+                if (entry.getValue().equals(name)) { // Если данное имя имеется в Entry  !True!
+                    stringKey = stringKey.concat(entry.getKey() + ",");
+                }
             }
+            String k = stringKey.substring(0, stringKey.lastIndexOf(","));
+            setPhoneByName.add(name + " - " + k);
+            System.out.println(setPhoneByName);
+            return setPhoneByName;
         }
-        return "";
+        System.out.println("контакта с таким именим в списке нет");
+        return setPhoneByName;
     }
-
 
     public Object getAllContacts() {
         // формат одного контакта "Имя - Телефон"
         // если контактов нет в телефонной книге - вернуть пустой TreeSet
-        if (!mapPhone.isEmpty()) {
-            for (Map.Entry<String, String> mapToSet : mapPhone.entrySet()) {
-                newSet.add(mapToSet.getValue() + " - " + mapToSet.getKey());
+        Set<String> phoneBookSet = new TreeSet<>();
+        ArrayList<String> list = new ArrayList<>(mapPhone.values());
+        Set<String> stringsOfKeys = new TreeSet<>(mapPhone.values());
+        ArrayList<String> listValues = new ArrayList<>(stringsOfKeys);
+
+        for (int i = 0; i < listValues.size(); i++) {
+            int ch = 0; // счётчик
+            String s = "";
+
+            for (int j = 0; j < list.size(); j++) {
+                boolean b = list.get(j).contains(listValues.get(i));
+                if (b) {
+                    ch++;
+                }
             }
-            return newSet;
-        } else {
-            return new TreeSet<>();
+            if (ch > 0) {
+                for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
+                    if (entry.getValue().equals(listValues.get(i))) {
+                        s = s.concat(entry.getKey() + ",");
+                    }
+                }
+                String k = s.substring(0, s.lastIndexOf(","));
+                phoneBookSet.add(listValues.get(i) + " - " + k);
+            } else {
+                for (Map.Entry<String, String> entry : mapPhone.entrySet()) {
+                    phoneBookSet.add(entry.getValue() + " - " + entry.getKey());
+                }
+            }
         }
+        for (String printContacts : phoneBookSet) {
+            System.out.println(printContacts);
+        }
+        return phoneBookSet;
     }
 }
