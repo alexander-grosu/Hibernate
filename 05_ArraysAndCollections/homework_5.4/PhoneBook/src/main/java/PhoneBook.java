@@ -50,9 +50,10 @@ public class PhoneBook {
             setPhoneByName.add(name + " - " + k);
             System.out.println(setPhoneByName);
             return setPhoneByName;
+        } else {
+            System.out.println("контакта с таким именим в списке нет");
+            return setPhoneByName;
         }
-        System.out.println("контакта с таким именим в списке нет");
-        return setPhoneByName;
     }
 
     public Object getAllContacts() {
