@@ -48,7 +48,9 @@ public class PhoneBook {
             }
             String k = stringKey.substring(0, stringKey.lastIndexOf(","));
             setPhoneByName.add(name + " - " + k);
-            System.out.println(setPhoneByName);
+            for (String byName : setPhoneByName) {
+            System.out.println(byName);
+            }
             return setPhoneByName;
         } else {
             System.out.println("контакта с таким именим в списке нет");
