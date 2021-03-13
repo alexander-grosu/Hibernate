@@ -3,7 +3,6 @@ import java.util.regex.Pattern;
 
 public class PhoneBook {
     Map<String, String> mapPhone = new HashMap<>();
-    private Set<String> newSet = new TreeSet<>();
 
     public void addContact(String phone, String name) {
         // проверьте корректность формата имени и телефона
@@ -49,7 +48,7 @@ public class PhoneBook {
             String k = stringKey.substring(0, stringKey.lastIndexOf(","));
             setPhoneByName.add(name + " - " + k);
             for (String byName : setPhoneByName) {
-            System.out.println(byName);
+                System.out.println(byName);
             }
             return setPhoneByName;
         } else {
