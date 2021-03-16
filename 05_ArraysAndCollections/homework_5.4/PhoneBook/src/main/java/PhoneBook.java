@@ -5,8 +5,7 @@ public class PhoneBook {
     Map<String, String> mapPhone = new HashMap<>();
 
     public void addContact(String phone, String name) {
-        // проверьте корректность формата имени и телефона
-        // если такой номер уже есть в списке, то перезаписать имя абонента
+
         String regexName = "^(([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,14})|([А-Я]{1}[а-я]{1,15}\\s[А-Я]{1}[а-я]{1,14}\\s[А-Я]{1}[а-я]{1,14}\\-[А-Я]{1}[а-я]{1,14}))$";
         String regexNumber = "^[0-9]{11}$";
         if (Pattern.compile(regexName).matcher(name).matches() && Pattern.compile(regexNumber).matcher(phone).matches()) {
@@ -21,8 +20,7 @@ public class PhoneBook {
     }
 
     public String getNameByPhone(String phone) {
-        // формат одного контакта "Имя - Телефон"
-        // если контакт не найдены - вернуть пустую строку
+
         String nameByPhone = "";
         if (mapPhone.containsKey(phone)) {
             nameByPhone = mapPhone.get(phone) + " - " + phone;
@@ -35,8 +33,7 @@ public class PhoneBook {
     }
 
     public Set<String> getPhonesByName(String name) {
-        // формат одного контакта "Имя - Телефон"
-        // если контакт не найден - вернуть пустой TreeSet
+
         Set<String> setPhoneByName = new TreeSet<>();
         String stringKey = "";
         if (mapPhone.containsValue(name)) {
@@ -58,8 +55,7 @@ public class PhoneBook {
     }
 
     public Object getAllContacts() {
-        // формат одного контакта "Имя - Телефон"
-        // если контактов нет в телефонной книге - вернуть пустой TreeSet
+
         Set<String> phoneBookSet = new TreeSet<>();
         ArrayList<String> list = new ArrayList<>(mapPhone.values());
         Set<String> stringsOfKeys = new TreeSet<>(mapPhone.values());

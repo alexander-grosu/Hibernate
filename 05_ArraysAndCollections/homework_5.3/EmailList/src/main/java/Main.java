@@ -11,7 +11,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("чтобы увидеть список команд введите HELP");
         command = scanner.nextLine();
-        /*  регулярка "regexEmail" очень длинная но зато можно вводить 3 формата e-mail
+        /*  регулярка "regexEmail" может вводить 3 формата e-mail
          *  1. abcdef@yandex.ru
          *  2. abcdef-abcdef@yandex.ru
          *  3. abcdef.abcdef@yandex.ru  */
