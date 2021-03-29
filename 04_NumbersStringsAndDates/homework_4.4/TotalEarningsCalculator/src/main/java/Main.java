@@ -13,7 +13,7 @@ public class Main {
         String num2 = text.substring(c,d);
 
         int e = text.lastIndexOf('3');
-        int f = text.lastIndexOf('0') + 1;
+        int f = text.lastIndexOf('0') + 1;  // or int f = e + 5;
         String num3 = text.substring(e,f);
 
         int totalSum = Integer.parseInt(num1) + Integer.parseInt(num2) + Integer.parseInt(num3);
