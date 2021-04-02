@@ -3,6 +3,7 @@ public class Main {
         Client clientIndividual = new IndividualBusinessman();
         Client clientPhysical = new PhysicalPerson();
         Client clientLegal = new LegalPerson();
+        Client clentLegal2 = new LegalPerson(5777);
 
         clientIndividual.put(1000); // put >= 1000 minus 0,5% ... 1000 = 995
         System.out.println("Client individual count " + clientIndividual.getAmount()); // 995
@@ -16,5 +17,6 @@ public class Main {
         System.out.println("Client physical count " + clientPhysical.getAmount()); //3500
         clientPhysical.take(2700); // 3500 - 2700
         System.out.println("Client physical count " + clientPhysical.getAmount());
+        System.out.println("Client legal2 count " + clentLegal2.getAmount());
     }
 }
