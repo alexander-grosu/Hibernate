@@ -2,16 +2,33 @@ import java.util.Calendar;
 
 public class DepositAccount extends BankAccount {
     private Calendar nowTime;
-    private Calendar lastIncome = super.getLastIncome();
+    private Calendar lastIncome;
+
+    public DepositAccount(){
+        super();
+    }
+
+    public DepositAccount(double count){
+        super(count);
+    }
 
 
     @Override
-    public void take(double amountToTake) {
+    public boolean put(double amountToPut) {
+        lastIncome = Calendar.getInstance();
+        super.put(amountToPut);
+        return true;
+    }
+
+    @Override
+    public boolean take(double amountToTake) {
         nowTime = Calendar.getInstance();
         nowTime.add(Calendar.MONTH, -1);
 
-        if (lastIncome != null && lastIncome.before(nowTime) && amountToTake <= count && amountToTake > 0) {
-            count -= amountToTake;
+        if (lastIncome != null && lastIncome.before(nowTime) && amountToTake > 0) {
+            super.take(amountToTake);
+            return true;
         }
+        return false;
     }
 }

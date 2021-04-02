@@ -1,11 +1,17 @@
 public class CardAccount extends BankAccount {
+   private static final double ONE_PERCENT = 0.01;
+
+    public CardAccount(){
+        super();
+    }
+
+    public CardAccount(double count){
+        super(count);
+    }
 
     @Override
-    public void take(double amountToTake) {
-        double percent = 0.01;
-        double finalPercent = percent * amountToTake;
-        if (amountToTake + finalPercent <= count) {
-            count -= amountToTake + finalPercent;
-        }
+    public boolean take(double amountToTake) {
+            super.take(amountToTake + amountToTake * ONE_PERCENT);
+            return true;
     }
 }
