@@ -1,3 +1,6 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -11,8 +14,13 @@ public class Main {
     }
 
     public static Employee findEmployeeWithHighestSalary(List<Employee> staff, int year) {
-        //TODO Метод должен вернуть сотрудника с максимальной зарплатой среди тех,
-        // кто пришёл в году, указанном в переменной year
-        return null;
+        DateFormat df = new SimpleDateFormat("yyyy"); // simple date format(yyyy) вместо устаревшего getYear();
+
+        var employeeWithMaxSalary = staff.stream()
+                .filter(obj -> df.format(obj.getWorkStart()).equals(String.valueOf(year)))
+                .max(Comparator.comparing(Employee::getSalary))
+                .orElseThrow(NoSuchFieldError::new);  // or get()
+
+        return employeeWithMaxSalary;
     }
 }
