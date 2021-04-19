@@ -11,7 +11,7 @@ public class Main {
 
         //company1.setIncome(10_000_000);
         company1.setIncome(10_000_001);
-        company1.getSortedSalaryToMin();
+        company1.getSortedSalaryToMin(7);
 
     }
 }

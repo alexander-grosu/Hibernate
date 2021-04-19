@@ -35,7 +35,7 @@ public class Company {
         employeeList.add(employee);
     }
 
-    public static void getSortedSalaryToMax() {
+    public static void getSortedSalaryToMax(int count) {
         Collections.sort(employeeList, (o1, o2) -> {
             if (o1.getMonthSalary() > o2.getMonthSalary()) {
                 return 1;
@@ -47,13 +47,13 @@ public class Company {
                 return 0;
             }
         });
-        for (Employee s : employeeList) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        for (Employee s : employeeList.subList(0 , count)) {
             System.out.println(formatter.format(s.getMonthSalary()));
         }
     }
 
-    public static void getSortedSalaryToMin() {
+    public static void getSortedSalaryToMin(int count) {
         Collections.sort(employeeList, (o1, o2) -> {
             if (o1.getMonthSalary() > o2.getMonthSalary()) {
                 return -1;
@@ -65,8 +65,9 @@ public class Company {
                 return 0;
             }
         });
-        for (Employee s : employeeList) {
-            DecimalFormat formatter = new DecimalFormat("#0.00");
+
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        for (Employee s : employeeList.subList(0 , count)) {
             System.out.println(formatter.format(s.getMonthSalary()));
         }
     }
