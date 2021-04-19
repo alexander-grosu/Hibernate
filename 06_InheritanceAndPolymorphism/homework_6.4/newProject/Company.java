@@ -9,7 +9,7 @@ public class Company {
 
     public void setIncome(double income) {
         //income setter
-        Company.income = income;
+        this.income = income;
     }
 
     public static double getIncome() {
@@ -35,7 +35,7 @@ public class Company {
         employeeList.add(employee);
     }
 
-    public static void getSortedSalaryToMax(int count) {
+    public void getSortedSalaryToMax(int count) {
         Collections.sort(employeeList, (o1, o2) -> {
             if (o1.getMonthSalary() > o2.getMonthSalary()) {
                 return 1;
@@ -53,7 +53,7 @@ public class Company {
         }
     }
 
-    public static void getSortedSalaryToMin(int count) {
+    public void getSortedSalaryToMin(int count) {
         Collections.sort(employeeList, (o1, o2) -> {
             if (o1.getMonthSalary() > o2.getMonthSalary()) {
                 return -1;
@@ -72,8 +72,10 @@ public class Company {
         }
     }
 
-    public void fire(Employee employee) {
+    public void fire(Employee employee,int count) {
         //delete one employee
+        for (int i = 0; i < count; i++) {
         employeeList.remove(employee);
     }
+}
 }
