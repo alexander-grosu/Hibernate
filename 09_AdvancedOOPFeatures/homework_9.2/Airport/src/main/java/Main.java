@@ -22,14 +22,14 @@ public class Main {
 
         LocalDateTime timeNow = LocalDateTime.now();
 
-        var flyInNextTwoHours = airport.getTerminals().stream()
-                .flatMap(o -> o.getFlights().stream())
-                .filter(o -> o.getType().equals(Flight.Type.DEPARTURE))
-                .filter(o -> LocalDateTime.ofInstant(o.getDate().toInstant(), ZoneId.systemDefault()).isAfter(timeNow)
-                        && LocalDateTime.ofInstant(o.getDate().toInstant(), ZoneId.systemDefault()).isBefore(timeNow.plusHours(2)))
+        var flightsInNextTwoHours = airport.getTerminals().stream()
+                .flatMap(terminals -> terminals.getFlights().stream())
+                .filter(flight -> flight.getType().equals(Flight.Type.DEPARTURE))
+                .filter(flight -> LocalDateTime.ofInstant(flight.getDate().toInstant(), ZoneId.systemDefault()).isAfter(timeNow)
+                        && LocalDateTime.ofInstant(flight.getDate().toInstant(), ZoneId.systemDefault()).isBefore(timeNow.plusHours(2)))
                 .collect(Collectors.toList());
 
-        return flyInNextTwoHours;
+        return flightsInNextTwoHours;
     }
 
 }
