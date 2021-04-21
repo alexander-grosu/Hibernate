@@ -1,25 +1,25 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Company {
     public static double income;
+    ArrayList<Employee> employeeList = new ArrayList<>();
 
-    public static ArrayList<Employee> employeeList = new ArrayList<>();
+    public ArrayList<Employee> getEmployeeList() {
+        return employeeList;
+    }
 
     public void setIncome(double income) {
         //income setter
-        this.income = income;
+        Company.income = income;
     }
 
     public static double getIncome() {
         //income getter
         return income;
-    }
-
-    public Company() {
-        new ArrayList<String>();
-        setIncome(income);
     }
 
     public ArrayList<Employee> hireAll(Employee employee, int count) {
@@ -35,47 +35,30 @@ public class Company {
         employeeList.add(employee);
     }
 
-    public void getSortedSalaryToMax(int count) {
-        Collections.sort(employeeList, (o1, o2) -> {
-            if (o1.getMonthSalary() > o2.getMonthSalary()) {
-                return 1;
-            }
-            else if (o1.getMonthSalary() < o2.getMonthSalary()) {
-                return -1;
-            }
-            else {
-                return 0;
-            }
-        });
-        DecimalFormat formatter = new DecimalFormat("#0.00");
-        for (Employee s : employeeList.subList(0 , count)) {
-            System.out.println(formatter.format(s.getMonthSalary()));
-        }
-    }
-
-    public void getSortedSalaryToMin(int count) {
-        Collections.sort(employeeList, (o1, o2) -> {
-            if (o1.getMonthSalary() > o2.getMonthSalary()) {
-                return -1;
-            }
-            else if (o1.getMonthSalary() < o2.getMonthSalary()) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        });
-
-        DecimalFormat formatter = new DecimalFormat("#0.00");
-        for (Employee s : employeeList.subList(0 , count)) {
-            System.out.println(formatter.format(s.getMonthSalary()));
-        }
-    }
-
-    public void fire(Employee employee,int count) {
-        //delete one employee
+    public void fire (int count) {
+        //delete employee
         for (int i = 0; i < count; i++) {
-        employeeList.remove(employee);
+            employeeList.remove(employeeList.get(i));
+        }
     }
-}
+
+    public List <Employee> getLowestSalaryStaff(int count){
+        employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary));
+        ArrayList<Employee> result = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            result.add(employeeList.get(i));
+        }
+        return result;
+    }
+
+
+    public List <Employee> getTopSalaryStaff(int count){
+        employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary).reversed());
+        ArrayList<Employee> result = new ArrayList<>();
+        for (int i = 0; i < count; i++){
+            result.add(employeeList.get(i));
+        }
+        return result;
+    }
+
 }
