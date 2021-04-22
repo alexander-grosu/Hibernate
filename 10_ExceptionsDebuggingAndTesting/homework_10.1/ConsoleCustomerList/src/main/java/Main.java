@@ -15,7 +15,7 @@ public class Main {
         CustomerStorage executor = new CustomerStorage();
 
         while (true) {
-           try {
+            try {
 
                 String command = scanner.nextLine();
                 String[] tokens = command.split("\\s+", 2);
