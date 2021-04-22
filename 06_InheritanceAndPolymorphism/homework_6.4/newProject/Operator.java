@@ -1,7 +1,7 @@
 public class Operator implements Employee {
-    private static final double OPERATOR_SALARY = 45000.0;
+    private static final long OPERATOR_SALARY = (long) 45000.0;
     private static Company company;
-    private double salary;
+    private long salary;
 
     public Operator(Company company){
         this.salary = OPERATOR_SALARY;
@@ -9,7 +9,7 @@ public class Operator implements Employee {
     }
 
     @Override
-    public double getMonthSalary() {
-        return salary;
+    public Employee getMonthSalary() {
+        return (long) salary;
     }
 }

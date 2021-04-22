@@ -4,9 +4,12 @@ public class Main {
     public static void main(String[] args) {
         DecimalFormat formatter = new DecimalFormat("#0.00");
 
-        Company comp1111 = new Company();
-        comp1111.setIncome(1000000000);
-        comp1111.hireAll(new TopManager(comp1111), 100);
-        //.forEach(Employee::getMonthSalary);
+       Company c1 = new Company();
+       Company c2 = new Company();
+       c1.hireAll(new TopManager(c1), 11);
+        System.out.println(c1.getEmployeeList());
+        System.out.println(c2.getTopSalaryStaff(3));
+
+
     }
 }

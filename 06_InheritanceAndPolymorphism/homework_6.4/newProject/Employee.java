@@ -1,4 +1,4 @@
 public interface Employee {
 
-    double getMonthSalary();
+    Employee getMonthSalary();
 }

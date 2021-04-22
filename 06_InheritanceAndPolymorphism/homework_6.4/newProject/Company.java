@@ -1,6 +1,5 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -38,12 +37,12 @@ public class Company {
     public void fire (int count) {
         //delete employee
         for (int i = 0; i < count; i++) {
-            employeeList.remove(employeeList.get(i));
+            employeeList.remove(employeeList.get(0));
         }
     }
 
     public List <Employee> getLowestSalaryStaff(int count){
-        employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary));
+        employeeList.sort(Comparator.comparing(Employee::getMonthSalary));
         ArrayList<Employee> result = new ArrayList<>();
         for (int i = 0; i < count; i++){
             result.add(employeeList.get(i));
@@ -53,12 +52,16 @@ public class Company {
 
 
     public List <Employee> getTopSalaryStaff(int count){
-        employeeList.sort(Comparator.comparingDouble(Employee::getMonthSalary).reversed());
+        employeeList.sort(Comparator.comparing(getEmployee()::getMonthSalary).reversed());
         ArrayList<Employee> result = new ArrayList<>();
         for (int i = 0; i < count; i++){
             result.add(employeeList.get(i));
         }
         return result;
+    }
+
+    private static Object getEmployee() {
+        return Employee;
     }
 
 }
