@@ -1,4 +1,3 @@
-import javax.imageio.IIOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,13 +17,12 @@ public class CustomerStorage {
         String dataRegEx = "^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}\\s+[a-z]+?\\.?[a-z]+\\@[a-z]+\\.[a-z]+\\s+\\+[7]{1}[0-9]{10}$";
 
         if (!data.matches(dataRegEx)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Wrong command! is not a name,surname,email or phone.");
         }
 
         String[] components = data.split("\\s+");
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
-
     }
 
     public void listCustomers() {
