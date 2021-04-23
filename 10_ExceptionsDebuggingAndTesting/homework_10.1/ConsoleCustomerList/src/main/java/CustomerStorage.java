@@ -17,7 +17,7 @@ public class CustomerStorage {
         String dataRegEx = "^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}\\s+[a-z]+\\.?[a-z]+\\@[a-z]+\\.[a-z]+\\s+\\+[7]{1}[0-9]{10}$";
 
         if (!data.matches(dataRegEx)) {
-            throw new IllegalArgumentException("Wrong command! incorrect name,surname,email or phone.");
+            throw new IllegalArgumentException("Wrong! incorrect name,surname,email or phone format.");
         }
 
         String[] components = data.split("\\s+");
