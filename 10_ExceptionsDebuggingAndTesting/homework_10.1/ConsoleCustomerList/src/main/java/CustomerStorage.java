@@ -13,15 +13,22 @@ public class CustomerStorage {
         final int INDEX_SURNAME = 1;
         final int INDEX_EMAIL = 2;
         final int INDEX_PHONE = 3;
-        String dataRegEx = "^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}\\s+[a-z]+\\.?[a-z]+\\@[a-z]+\\.[a-z]+\\s+\\+[7]{1}[0-9]{10}$";
-
-        if (!data.matches(dataRegEx)) {
-            throw new IllegalArgumentException("Wrong! incorrect name,surname,email or phone format.");
-        }
 
         String[] components = data.split("\\s+");
+        if (components.length != 4) {
+            throw new ArrayIndexOutOfBoundsException("Wrong! array[] components length is not 4");
+        }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
+        if (!name.matches("^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}$")) {
+            throw new IllegalArgumentException("Wrong! incorrect name format.");
+        }
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
+        if (!components[INDEX_PHONE].matches("^\\+[7]{1}[0-9]{10}$")) {
+            throw new IllegalArgumentException("Wrong! incorrect phone format.");
+        }
+        if (!components[INDEX_EMAIL].matches("^([a-z]+\\.?[a-z]+\\@[a-z]+\\.[a-z]+|[a-z]+\\-?[a-z]+\\@[a-z]+\\.[a-z]+)$")) {
+            throw new IllegalArgumentException("Wrong! incorrect e-mail format.");
+        }
     }
 
     public void listCustomers() {
