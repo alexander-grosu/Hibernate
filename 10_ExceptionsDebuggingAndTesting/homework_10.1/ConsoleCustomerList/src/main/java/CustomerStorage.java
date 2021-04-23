@@ -16,7 +16,7 @@ public class CustomerStorage {
 
         String[] components = data.split("\\s+");
         if (components.length != 4) {
-            throw new ArrayIndexOutOfBoundsException("Wrong! array[] components length is not 4");
+            throw new ArrayIndexOutOfBoundsException("Wrong! class CustomerStorage, String[] components.length != 4.");
         }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
         if (!name.matches("^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}$")) {
