@@ -13,7 +13,6 @@ public class CustomerStorage {
         final int INDEX_SURNAME = 1;
         final int INDEX_EMAIL = 2;
         final int INDEX_PHONE = 3;
-
         String dataRegEx = "^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}\\s+[a-z]+\\.?[a-z]+\\@[a-z]+\\.[a-z]+\\s+\\+[7]{1}[0-9]{10}$";
 
         if (!data.matches(dataRegEx)) {
