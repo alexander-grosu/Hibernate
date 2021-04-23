@@ -33,7 +33,7 @@ public class Main {
                     System.out.println(COMMAND_ERROR);
                 }
 
-            } catch (Exception exception) {
+            } catch (IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
             }
         }
