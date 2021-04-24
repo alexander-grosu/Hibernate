@@ -31,11 +31,17 @@ public class CustomerStorage {
         }
     }
 
-    public void listCustomers() {
+    public void listCustomers() throws CustomerEmptyListException {
+        if (storage.isEmpty()) {
+            throw new CustomerEmptyListException();
+        }
         storage.values().forEach(System.out::println);
     }
 
-    public void removeCustomer(String name) {
+    public void removeCustomer(String name) throws CustomerNotFoundException {
+        if (!storage.containsKey(name)) {
+            throw new CustomerNotFoundException();
+        }
         storage.remove(name);
     }
 

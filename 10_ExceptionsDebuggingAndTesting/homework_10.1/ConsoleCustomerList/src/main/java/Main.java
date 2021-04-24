@@ -33,7 +33,10 @@ public class Main {
                     System.out.println(COMMAND_ERROR);
                 }
 
-            } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException exception) {
+            } catch (CustomerNotFoundException
+                    | CustomerEmptyListException
+                    | IllegalArgumentException
+                    | ArrayIndexOutOfBoundsException exception) {
                 System.out.println(exception.getMessage());
             }
         }
