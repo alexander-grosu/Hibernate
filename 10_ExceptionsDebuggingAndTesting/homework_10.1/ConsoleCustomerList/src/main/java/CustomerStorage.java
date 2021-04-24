@@ -16,18 +16,18 @@ public class CustomerStorage {
 
         String[] components = data.split("\\s+");
         if (components.length != 4) {
-            throw new ArrayIndexOutOfBoundsException("Wrong! class CustomerStorage, String[] components.length != 4.");
+            throw new ArrayIndexOutOfBoundsException("Error. CustomerStorage class, String[] components.length != 4.");
         }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
         if (!name.matches("^[А-Я]{1}[а-я]{1,10}\\s+[А-Я]{1}[а-я]{1,10}$")) {
-            throw new IllegalArgumentException("Wrong! incorrect name format.");
+            throw new IllegalArgumentException("Error. incorrect name format.");
         }
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
         if (!components[INDEX_PHONE].matches("^\\+[7]{1}[0-9]{10}$")) {
-            throw new IllegalArgumentException("Wrong! incorrect phone format.");
+            throw new IllegalArgumentException("Error. incorrect phone format.");
         }
         if (!components[INDEX_EMAIL].matches("^([a-z]+\\.?[a-z]+\\@[a-z]+\\.[a-z]+|[a-z]+\\-?[a-z]+\\@[a-z]+\\.[a-z]+)$")) {
-            throw new IllegalArgumentException("Wrong! incorrect e-mail format.");
+            throw new IllegalArgumentException("Error. incorrect e-mail format.");
         }
     }
 
