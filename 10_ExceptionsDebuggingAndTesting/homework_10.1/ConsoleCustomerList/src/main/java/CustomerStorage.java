@@ -31,9 +31,9 @@ public class CustomerStorage {
         }
     }
 
-    public void listCustomers() throws CustomerEmptyListException {
+    public void listCustomers() throws EmptyListException {
         if (storage.isEmpty()) {
-            throw new CustomerEmptyListException();
+            throw new EmptyListException();
         }
         storage.values().forEach(System.out::println);
     }

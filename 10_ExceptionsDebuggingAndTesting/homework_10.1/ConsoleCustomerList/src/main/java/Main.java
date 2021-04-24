@@ -34,7 +34,7 @@ public class Main {
                 }
 
             } catch (CustomerNotFoundException
-                    | CustomerEmptyListException
+                    | EmptyListException
                     | IllegalArgumentException
                     | ArrayIndexOutOfBoundsException exception) {
                 System.out.println(exception.getMessage());
