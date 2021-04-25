@@ -38,9 +38,9 @@ public class CustomerStorage {
         storage.values().forEach(System.out::println);
     }
 
-    public void removeCustomer(String name) throws CustomerNotFoundException {
+    public void removeCustomer(String name) throws ThisCustomerNotFoundOnTheListException {
         if (!storage.containsKey(name)) {
-            throw new CustomerNotFoundException();
+            throw new ThisCustomerNotFoundOnTheListException();
         }
         storage.remove(name);
     }
