@@ -1,9 +1,5 @@
 import core.Station;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RouteCalculator {
     private final StationIndex stationIndex;
@@ -15,6 +11,7 @@ public class RouteCalculator {
         this.stationIndex = stationIndex;
     }
 
+
     public List<Station> getShortestRoute(Station from, Station to) {
         List<Station> route = getRouteOnTheLine(from, to);
         if (route != null) {
@@ -22,12 +19,12 @@ public class RouteCalculator {
         }
 
         route = getRouteWithOneConnection(from, to);
-        if (route != null) {
+        if (route != null && route.size() > 0) {
             return route;
         }
 
         route = getRouteWithTwoConnections(from, to);
-        return route;
+            return route;
     }
 
     public static double calculateDuration(List<Station> route) {
@@ -97,6 +94,7 @@ public class RouteCalculator {
                 }
             }
         }
+        if (route.size() == 0) return null;
         return route;
     }
 
@@ -136,9 +134,9 @@ public class RouteCalculator {
                     continue;
                 }
                 List<Station> way = new ArrayList<>();
-                way.addAll(getRouteOnTheLine(from, srcStation));
+                way.addAll(Objects.requireNonNull(getRouteOnTheLine(from, srcStation)));
                 way.addAll(connectedLineRoute);
-                way.addAll(getRouteOnTheLine(dstStation, to));
+                way.addAll(Objects.requireNonNull(getRouteOnTheLine(dstStation, to)));
                 if (route.isEmpty() || route.size() > way.size()) {
                     route.clear();
                     route.addAll(way);
