@@ -79,10 +79,10 @@ public class Main {
             String line = scanner.nextLine().trim();
             Station station = stationIndex.getStation(line);
             if (station != null) {
-                logger.info(INFO_MARKER, "user find station  {}" , line);
+                logger.info(INFO_MARKER, "user find station  {}", line);
                 return station;
             }
-            logger.info(INFO_MARKER,"user not find {} station", line);
+            logger.info(INFO_MARKER, "user not find {} station", line);
             logger.warn(WARN_MARKER, "user not find {} station", line);
             System.out.println("Станция не найдена :(");
         }
