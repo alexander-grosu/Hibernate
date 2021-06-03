@@ -71,17 +71,17 @@ public class RouteCalculatorTest extends TestCase {
                         stationIndex.getStation("Station B3"), stationIndex.getStation("Station B2"),
                         stationIndex.getStation("Station B1"), stationIndex.getStation("Station A1"),
                         stationIndex.getStation("Station A2")));
-        var actual = RouteCalculator.calculateDuration(route);
-        var expected = 29.0;
+        double actual = RouteCalculator.calculateDuration(route);
+        double expected = 29.0;
         assertEquals(expected, actual);
     }
 
     public void testGetShortestRouteWithOutConnection() {
         // Expected :[Station A1, Station A2, Station A3]
         // Actual   :[Station A1, Station A2, Station A3]
-        var expected = new ArrayList<Station>(Arrays.asList(
+        List<Station> expected = new ArrayList<Station>(Arrays.asList(
                 stationIndex.getStation("Station A1"), stationIndex.getStation("Station A2"), stationIndex.getStation("Station A3")));
-        var actual = routeCalculator
+        List<Station> actual = routeCalculator
                 .getShortestRoute(stationIndex.getStation("Station A1"), stationIndex.getStation("Station A3"));
         assertEquals(expected, actual);
     }
@@ -89,10 +89,10 @@ public class RouteCalculatorTest extends TestCase {
     public void testGetShortestRouteWithOneConnection() {
         // Expected :[Station A1, Station B1, Station B2]
         // Actual   :[Station A1, Station B1, Station B2]
-        var expected = new ArrayList<>(Arrays
+        List<Station> expected = new ArrayList<>(Arrays
                 .asList(stationIndex.getStation("Station A1"), stationIndex.getStation("Station B1"),
                         stationIndex.getStation("Station B2")));
-        var actual = routeCalculator
+        List<Station> actual = routeCalculator
                 .getShortestRoute(stationIndex.getStation("Station A1"), stationIndex.getStation("Station B2"));
         assertEquals(expected, actual);
     }
@@ -100,10 +100,10 @@ public class RouteCalculatorTest extends TestCase {
     public void testGetShortestRouteWithTwoConnection() {
         // Expected :[Station A2, Station A3, Station B3, Station C3]
         // Actual   :[Station A2, Station A3, Station B3, Station C3]
-        var expected = new ArrayList<>(Arrays
+        List<Station> expected = new ArrayList<>(Arrays
                 .asList(stationIndex.getStation("Station A2"), stationIndex.getStation("Station A3"),
                         stationIndex.getStation("Station B3"), stationIndex.getStation("Station C3")));
-        var actual = routeCalculator
+        List<Station> actual = routeCalculator
                 .getShortestRoute(stationIndex.getStation("Station A2"), stationIndex.getStation("Station C3"));
         assertEquals(expected, actual);
     }

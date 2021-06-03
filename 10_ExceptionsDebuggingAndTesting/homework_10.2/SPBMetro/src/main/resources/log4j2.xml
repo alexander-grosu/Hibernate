@@ -7,17 +7,17 @@
         </Console>
 
         <File name="ErrorFile" fileName="logs/Error.log">
-            <MarkerFilter marker="Error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <MarkerFilter marker="error_marker" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
         <File name="InfoFile" fileName="logs/Info.log">
-            <MarkerFilter marker="Info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <MarkerFilter marker="info_marker" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
         <File name="WarnFile" fileName="logs/Warn.log">
-            <MarkerFilter marker="Warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <MarkerFilter marker="warn_marker" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 

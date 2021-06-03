@@ -16,9 +16,9 @@ import java.util.Scanner;
 
 public class Main {
     private static Logger logger;
-    private static final Marker INFO_MARKER = MarkerManager.getMarker("info message");
-    private static final Marker WARN_MARKER = MarkerManager.getMarker("warn message");
-    private static final Marker ERROR_MARKER = MarkerManager.getMarker("error message");
+    private static final Marker INFO_MARKER = MarkerManager.getMarker("info_marker");
+    private static final Marker WARN_MARKER = MarkerManager.getMarker("warn_marker");
+    private static final Marker ERROR_MARKER = MarkerManager.getMarker("error_marker");
 
     private static final String DATA_FILE = "src/main/resources/map.json";
     private static Scanner scanner;
@@ -46,7 +46,7 @@ public class Main {
                         RouteCalculator.calculateDuration(route) + " минут");
             } catch (Exception exception) {
 
-                logger.error(ERROR_MARKER, "error mesage");
+                logger.error(ERROR_MARKER, "error message");
                 exception.printStackTrace();
             }
         }
@@ -79,10 +79,11 @@ public class Main {
             String line = scanner.nextLine().trim();
             Station station = stationIndex.getStation(line);
             if (station != null) {
-                logger.info(INFO_MARKER, "info message" , station);
+                logger.info(INFO_MARKER, "user find station  {}" , line);
                 return station;
             }
-            logger.warn(WARN_MARKER, "warn message");
+            logger.info(INFO_MARKER,"user not find {} station", line);
+            logger.warn(WARN_MARKER, "user not find {} station", line);
             System.out.println("Станция не найдена :(");
         }
     }
