@@ -19,7 +19,7 @@ public class Main {
                         || Paths.get(destination).toFile().isDirectory()) {
                     FileUtils.copyFolder(source, destination);
                 }
-            } else if (Pattern.compile("EXIT").matcher(source).matches()) {
+            } else if (Pattern.compile("EXIT").matcher(destination).matches()) {
                 System.out.println("program is finished");
                 break;
             } else if (Pattern.compile("EXIT").matcher(source).matches()) {
