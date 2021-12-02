@@ -1,4 +1,4 @@
-import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,8 +15,8 @@ public class Main {
         Map<String, String> valuesStations = new LinkedHashMap<>();
         Map<String, String> valuesLines = new LinkedHashMap<>();
         Map<String, String[]> lineStation = new LinkedHashMap<>();
-        Path destinationPathJson = Paths
-                .get("D:/HomeWork/java_basics/11_FilesAndNetwork/homework_11.6/file.json");
+        Path destinationJSONObject = Paths
+                .get("D:/HomeWork/java_basics/11_FilesAndNetwork/homework_11.6/JSONObject.json");
 
         //parse HTML
         String fileHTML =
@@ -86,11 +86,13 @@ public class Main {
                 System.out.println("\n" + entry.getKey() + " \nstation count: " + size + "\nstations:  " + v);
             }
 
-            //convert LinkedHashMap to JSONArray and write to file
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.put(lineStation);
-            String json = jsonArray.toString(jsonArray.length());
-            Files.writeString(destinationPathJson, json);
+            //convert LinkedHashMap to JSONObject and write to file
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("Moscow subway",lineStation);
+            String jsonObjectMetro = jsonObject.toString(jsonObject.length());
+            Files.writeString(destinationJSONObject,jsonObjectMetro);
+
 
         } catch (Exception e) {
             e.printStackTrace();
