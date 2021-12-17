@@ -1,18 +1,19 @@
 import javax.persistence.*;
+
 @Entity
 @Table(name = "Courses")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
-    private int duration;
-    private String description;
-    @Column(name = "teacher_id")
-    private int teacherId;
+    private Integer duration;
+    private String description;               // 'int' is the primitive data type that cannot assign null to it
+    @Column(name = "teacher_id")              //  while
+    private Integer teacherId;                // 'Integer' is the wrapper class of int which can accept null
     @Column(name = "students_count")
-    private int studentsCount;
-    private int price;
+    private Integer studentsCount;
+    private Integer price;
     @Column(name = "price_per_hour")
     private float pricePerHour;
     @Enumerated(EnumType.STRING)
@@ -20,11 +21,11 @@ public class Course {
     private CourseType type;
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,11 +37,11 @@ public class Course {
         this.name = name;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
@@ -52,27 +53,27 @@ public class Course {
         this.description = description;
     }
 
-    public int getTeacherId() {
+    public Integer getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
 
-    public int getStudentsCount() {
+    public Integer getStudentsCount() {
         return studentsCount;
     }
 
-    public void setStudentsCount(int studentsCount) {
+    public void setStudentsCount(Integer studentsCount) {
         this.studentsCount = studentsCount;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

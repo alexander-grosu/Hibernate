@@ -15,15 +15,15 @@ public class Main {
             SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
             Session session = sessionFactory.openSession();
 
-            //EXAMPLES
+            //EXAMPLE
             int i = 1;
-            Course course = session.get(Course.class, i);
-            System.out.println(course.getId() + " " + course.getName() + "\nstudents count: " + course.getStudentsCount());
-            while(true){
+            Course course = session.load(Course.class, i);   //get(Course.class, i);
+            System.out.println(course.getId() + " " + course.getName() + "\nstudents count: " + course.getPrice());
+            do {
                 i++;
-                Course course1 = session.get(Course.class,i);
+                Course course1 = session.load(Course.class,i);
                 System.out.println(course1.getId() + " " + course1.getName() + "\nstudents count: " + course1.getStudentsCount());
-            }
+            } while (true);
 
         } catch (Exception e) {
 
