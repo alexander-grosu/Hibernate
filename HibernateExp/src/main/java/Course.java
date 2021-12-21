@@ -14,7 +14,7 @@ public class Course {
     @Column(name = "students_count")
     private Integer studentsCount;
     private Integer price;
-    @Column(name = "price_per_hour")
+    @Column(name = "price_per_hour")  // - - - - -> name like in sql table
     private float pricePerHour;
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
