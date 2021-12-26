@@ -1,52 +1,47 @@
 package folder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class Company {
-
-    public static double income;
+    private static double income = 0.0;
     ArrayList<Employee> employees = new ArrayList<>();
 
-    public Company(double income){
-        this.income = income;
+    public static void setIncome(double income) {
+        Company.income = income;
     }
-
+    public static double getIncome() {
+        return income;
+    }
     public void hire(Employee employee){
         employees.add(employee);
     }
-
     public void fire(Employee employee){
         employees.remove(employee);
     }
-
     public void fireAll(){
         employees.clear();
     }
-    public ArrayList<Employee> hireAll(Employee employee, int count) {
-        for (int i = 0; i < count; i++) {
-           employees.add(employee);
-        }
+    public  List<Employee> getDescendingOrderSalary(){
+        employees.sort((o1, o2) -> (int) (o2.getMonthSalary() - o1.getMonthSalary()));
         return employees;
     }
     public List<Employee> getTopSalaryStaff(int count) {
-        employees.sort(new EmployeeComparator().reversed());
-        List<Employee> result = new ArrayList<>();
-        for (int i = 0; i < count; i++)
-            result.add(employees.get(i));
-        return result;
+        return getSortList(count, (o1, o2) -> (int) (o2.getMonthSalary() - o1.getMonthSalary()));
     }
-
     public List<Employee> getLowestSalaryStaff(int count) {
-        employees.sort(new EmployeeComparator());
+        return getSortList(count, (o1, o2) -> (int) (o1.getMonthSalary() - o2.getMonthSalary()));
+    }
+    private @NotNull List<Employee> getSortList(int count,Comparator<Employee> comparator) {
+        employees.sort(comparator);
         List<Employee> result = new ArrayList<>();
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++) {
             result.add(employees.get(i));
+        }
         return result;
     }
-
-
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
-
 }
