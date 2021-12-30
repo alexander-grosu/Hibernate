@@ -19,7 +19,7 @@ public class Main {
             int i = 1;
 
                 Course course = session.get(Course.class, i);   //get(Course.class, i);
-                System.out.println("\n" + course.getId() + " " + course.getName() + "\nstudents count: " + course.getPrice());
+                System.out.println("\n" + course.getId() + " " + course.getName() + "\nstudents count: " + course.getStudentsCount());
                 do {
                     i++;
                     Course course1 = session.get(Course.class, i);
