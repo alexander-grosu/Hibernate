@@ -1,4 +1,7 @@
+import com.sun.istack.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +13,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
+    @NotNull
     private Integer id;
     @Getter
     @Setter

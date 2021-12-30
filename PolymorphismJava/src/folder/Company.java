@@ -1,7 +1,5 @@
 package folder;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 
 public class Company {
@@ -28,17 +26,17 @@ public class Company {
         return employees;
     }
     public List<Employee> getTopSalaryStaff(int count) {
-        return getSortList(count, (o1, o2) -> (int) (o2.getMonthSalary() - o1.getMonthSalary()));
+        employees.sort(Comparator.comparingDouble(Employee::getMonthSalary).reversed());
+        List<Employee> result = new ArrayList<>();
+        for (int i = 0; i < count; i++)
+            result.add(employees.get(i));
+        return result;
     }
     public List<Employee> getLowestSalaryStaff(int count) {
-        return getSortList(count, (o1, o2) -> (int) (o1.getMonthSalary() - o2.getMonthSalary()));
-    }
-    private @NotNull List<Employee> getSortList(int count,Comparator<Employee> comparator) {
-        employees.sort(comparator);
+        employees.sort(Comparator.comparingDouble(Employee::getMonthSalary));
         List<Employee> result = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             result.add(employees.get(i));
-        }
         return result;
     }
     public ArrayList<Employee> getEmployees() {

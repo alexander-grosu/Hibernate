@@ -17,13 +17,14 @@ public class Main {
 
             //EXAMPLE
             int i = 1;
-            Course course = session.get(Course.class, i);   //get(Course.class, i);
-            System.out.println(course.getId() + " " + course.getName() + "\nstudents count: " + course.getPrice());
-            do {
-                i++;
-                Course course1 = session.get(Course.class, i);
-                System.out.println("\n" + course1.getId() + " " + course1.getName() + "\nstudents count: " + course1.getStudentsCount());
-            } while (true);
+
+                Course course = session.get(Course.class, i);   //get(Course.class, i);
+                System.out.println(course.getId() + course.getName() + "\nstudents count: " + course.getPrice());
+                do {
+                    i++;
+                    Course course1 = session.get(Course.class, i);
+                    System.out.println("\n" + course1.getId() + " " + course1.getName() + "\nstudents count: " + course1.getStudentsCount());
+                } while (true);
 
         } catch (Exception e) {
             e.printStackTrace();
