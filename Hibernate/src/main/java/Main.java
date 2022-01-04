@@ -28,8 +28,8 @@ public class Main {
             System.out.println(course.getId() + " " + course.getName() + " | " + course.getType() + "\nstudents count: " + course.getStudentsCount() + "\n");
         }
 
-        registry.close();
-        sessionFactory.close();
         session.close();
+        sessionFactory.close();
+        registry.close();
     }
 }
