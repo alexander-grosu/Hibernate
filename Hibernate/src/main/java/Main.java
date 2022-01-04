@@ -8,10 +8,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.List;
 
 public class Main {
+    private static final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+    private static final Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
+    private static final SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+
     public static void main(String[] args) {
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-        Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
-        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+
         Session session = sessionFactory.openSession();
         List courseList = session.createQuery("FROM " + Course.class.getSimpleName()).getResultList();
 
