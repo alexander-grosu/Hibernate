@@ -25,5 +25,9 @@ public class Main {
             course = session.get(Course.class, id);
             System.out.println(course.getName() + " | " + course.getType() +  "\nstudents count: " + course.getStudentsCount() + "\n");
         }
+
+        registry.close();
+        sessionFactory.close();
+        session.close();
     }
 }
