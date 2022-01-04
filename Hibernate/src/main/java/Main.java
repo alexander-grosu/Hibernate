@@ -21,11 +21,11 @@ public class Main {
         int id = 1;
 
         Course course = session.get(Course.class, id);
-        System.out.println("\n" + course.getName() + " | " + course.getType() + "\nstudents count: " + course.getStudentsCount() + "\n");
+        System.out.println("\n" + course.getId() + " " + course.getName() + " | " + course.getType() + "\nstudents count: " + course.getStudentsCount() + "\n");
         while (id < size) {
             id++;
             course = session.get(Course.class, id);
-            System.out.println(course.getName() + " | " + course.getType() +  "\nstudents count: " + course.getStudentsCount() + "\n");
+            System.out.println(course.getId() + " " + course.getName() + " | " + course.getType() + "\nstudents count: " + course.getStudentsCount() + "\n");
         }
 
         registry.close();
