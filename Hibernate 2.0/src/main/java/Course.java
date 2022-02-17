@@ -1,13 +1,17 @@
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Table(name="Courses")
 @Getter
 @Setter
-@Table(name="Courses")
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
 class Course
 {
     @Id
@@ -21,7 +25,8 @@ class Course
 
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // many courses to one teacher
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ToString.Exclude // many courses to one teacher
     private Teacher teacher;
 
     @Column(name = "students_count")
@@ -41,9 +46,27 @@ class Course
             name = "Subscriptions",
             joinColumns = @JoinColumn(name="course_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName="id"))
+    @ToString.Exclude
     private List<Students> students;
 
-    @OneToMany(mappedBy = "courseName", fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "course")
+    @ToString.Exclude
+    private List<Subscriptions> subscriptionsList;
+    @OneToMany(mappedBy = "courseName")
+    @ToString.Exclude
     private List<PurchaseList> purchaseLists;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Course course = (Course) o;
+        return id != null && Objects.equals(id, course.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

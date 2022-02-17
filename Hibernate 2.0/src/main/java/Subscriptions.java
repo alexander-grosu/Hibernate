@@ -1,39 +1,65 @@
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
-@Setter
-@Getter
 @Table(name = "Subscriptions")
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Subscriptions
 {
     @EmbeddedId
-    private SubscriptionId sKey;
+    private SubscriptionKey sKey;
 
-    @Column(name = "student_id", insertable = false, updatable = false)
-    private int studentId;
+    @ManyToOne
+    @JoinColumn(name = "student_id",insertable = false,updatable = false)
+    private Students student;
 
-    @Column(name = "course_id", insertable = false, updatable = false)
-    private int courseId;
+    @ManyToOne
+    @JoinColumn(name = "course_id", insertable = false, updatable = false)
+    private Course course;
 
     @Column(name = "subscription_date")
     private Date subscriptionDate;
 
-    @NoArgsConstructor
-    @EqualsAndHashCode
-    @Getter
+    public Subscriptions(SubscriptionKey sKey) {
+        this.sKey = sKey;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Subscriptions that = (Subscriptions) o;
+        return sKey != null && Objects.equals(sKey, that.sKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sKey);
+    }
+
+}
+
+    @Data
     @Setter
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @EqualsAndHashCode
     @ToString
     @Embeddable
-    public static class SubscriptionId implements Serializable
-    {
+    class SubscriptionKey implements Serializable {
+
         @Column(name = "student_id")
-        private int studentId;
+        int studentId;
 
         @Column(name = "course_id")
-        private int courseId;
+        int courseId;
     }
-}

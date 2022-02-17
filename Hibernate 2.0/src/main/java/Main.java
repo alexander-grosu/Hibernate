@@ -1,39 +1,121 @@
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.persistence.Query;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class Main {
 
     public static void main(String[] args) {
+        LogManager logManager = LogManager.getLogManager();
+        Logger logger = logManager.getLogger("");
+        logger.setLevel(Level.SEVERE);
+
         try {
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
             Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
 
             SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
             Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
 
-            Students student = session.get(Students.class, 45);
-            List<Subscriptions> subsList = student.getSubscriptionsList();
-            int subsSize = student.getSubscriptionsList().size();
+            //  *** Students List
+            Criteria criteria = session.createCriteria(Students.class);
+            List<Students> allStudents = criteria.setMaxResults(5).list();
             int i = 0;
-            System.out.println("\n" + student.getName() + " subscried to " + subsSize + " courses:\n");
-            while (i < subsSize)
-            {
-                int courseId = subsList.get(i).getCourseId();
-                Course course = session.get(Course.class,courseId);
-                System.out.println("  |" + course.getName()
-                        + "\n  |subscription date: " + subsList.get(i).getSubscriptionDate()
-                        + "\n  |teacher: " + course.getTeacher().getName());
+            while (i < allStudents.size()) {
+                System.out.println("\n" + allStudents.get(i).getId() + ". " + allStudents.get(i).getName()
+                        + "\n\t| subscribed to "
+                        + allStudents.get(i).getSubscriptionsList().size()
+                        + " courses:"
+                );
                 i++;
             }
-            transaction.commit();
+            System.out.println();
+
+            //  *** Purchase List
+            Query query = session.createQuery("FROM PurchaseList");
+            List<PurchaseList> purchaseLists = query.setMaxResults(5).getResultList();
+            int index = 0;
+            int num = 1;
+            while (index < purchaseLists.size()) {
+                System.out.print("Purchase # " + num);
+                System.out.println("\n\t> course name:  " + purchaseLists.get(index).getCourseName()
+                        + "\n\t> student name:  " + purchaseLists.get(index).getStudentName()
+                        + "\n\t> price:  " + purchaseLists.get(index).getPrice()
+                        + "\n\t> reg date:  " + purchaseLists.get(index).getRegistrationDate()
+                        + "\n"
+                );
+                num++;
+                index++;
+            }
+
+            //  *** Subscriptions List
+            List<Subscriptions> subscriptions = session.createCriteria(Subscriptions.class).setMaxResults(5).list();
+            int number = 1;
+            for (Subscriptions subscription : subscriptions) {
+
+                System.out.println("SUBSCRIPTION # " + number + "\n" + subscription);
+                number++;
+            }
+
+            System.out.println("\n");
+
+            // new course
+//            Course course = new Course();          // id 50
+//            course.setType(CourseType.PROGRAMMING);
+//            course.setName("C++ с нуля до PRO");
+//            course.setDescription("Представляем вашему вниманию шикарный курс C++");
+//            course.setPrice(85000);
+//            course.setDuration(12);
+//            course.setTeacher(session.get(Teacher.class,4));
+//            course.setPricePerHour(2000);
+//            session.beginTransaction();
+//            session.save(course);
+//            session.getTransaction().commit();
+
+            // new student
+//            Students student = new Students();   //id 101
+//            student.setName("Alexander Grosu");
+//            student.setAge(32);
+//            student.setRegistrationDate(new Date());
+//            session.beginTransaction();
+//            session.save(student);
+//            session.getTransaction().commit();
+
+            //new subscription
+//            Subscriptions subscription = new Subscriptions();
+//            subscription.setSKey(new SubscriptionKey(101,50));
+//            subscription.setSubscriptionDate(new Date());
+//            session.beginTransaction();
+//            session.save(subscription);
+//            session.getTransaction().commit();
+
+
+            Students student = session.get(Students.class, 101);
+            System.out.println("\n\nstudent : " + student.getName()
+                    + "\n\t> age: " + student.getAge()
+                    + "\n\t> reg date: " + student.getRegistrationDate() + "\n\t> subscribed to " + student.getCourses().size() + " courses"
+                    + "\n\t\t> course name: " + student.getCourses().get(0).getName()
+                    + "\n\t\t> type: " + student.getCourses().get(0).getType()
+                    + "\n\t\t> teacher name: " + student.getCourses().get(0).getTeacher().getName()
+                    + "\n\t\t> start learning: " + student.getSubscriptionsList().get(0).getSubscriptionDate());
+
+
+                Subscriptions subscription = session.get(Subscriptions.class, new SubscriptionKey(101, 50));
+                if (session.get(Students.class, 101) != null && session.get(Course.class, 50) != null) {
+                    System.out.println("\nfind subscription with key (student id 101, course id 50)\n" + subscription);
+                } else {
+                    System.out.println("\nno such subscription exists");
+                }
+
             session.close();
 
         } catch (Exception e) {
