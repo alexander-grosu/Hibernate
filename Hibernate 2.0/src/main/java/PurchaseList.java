@@ -1,12 +1,17 @@
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name = "PurchaseList")
 public class PurchaseList implements Serializable
 {
@@ -38,5 +43,18 @@ public class PurchaseList implements Serializable
 
         @Column(name = "course_name")
         private String courseName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        PurchaseList that = (PurchaseList) o;
+        return pKey != null && Objects.equals(pKey, that.pKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pKey);
     }
 }

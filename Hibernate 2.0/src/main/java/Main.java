@@ -15,9 +15,6 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Main {
-
-    //private static Students o.getName();
-
     public static void main(String[] args) {
         LogManager logManager = LogManager.getLogManager();
         Logger logger = logManager.getLogger("");
@@ -120,6 +117,8 @@ public class Main {
                 System.out.println("\nno such subscription exists");
             }
 
+            System.out.println();
+
             List<PurchaseList> pList = session.createQuery("FROM " + PurchaseList.class.getSimpleName()).getResultList();
             for (PurchaseList p : pList) {
 
@@ -138,7 +137,6 @@ public class Main {
 //                session.getTransaction().commit();
 
             }
-
 
             session.close();
 
