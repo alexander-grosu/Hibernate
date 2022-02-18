@@ -8,11 +8,15 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Main {
+
+    //private static Students o.getName();
 
     public static void main(String[] args) {
         LogManager logManager = LogManager.getLogManager();
@@ -109,12 +113,32 @@ public class Main {
                     + "\n\t\t> start learning: " + student.getSubscriptionsList().get(0).getSubscriptionDate());
 
 
-                Subscriptions subscription = session.get(Subscriptions.class, new SubscriptionKey(101, 50));
-                if (session.get(Students.class, 101) != null && session.get(Course.class, 50) != null) {
-                    System.out.println("\nfind subscription with key (student id 101, course id 50)\n" + subscription);
-                } else {
-                    System.out.println("\nno such subscription exists");
-                }
+            Subscriptions subscription = session.get(Subscriptions.class, new SubscriptionKey(101, 50));
+            if (session.get(Students.class, 101) != null && session.get(Course.class, 50) != null) {
+                System.out.println("\nfind subscription with key (student id 101, course id 50)\n" + subscription);
+            } else {
+                System.out.println("\nno such subscription exists");
+            }
+
+            List<PurchaseList> pList = session.createQuery("FROM " + PurchaseList.class.getSimpleName()).getResultList();
+            for (PurchaseList p : pList) {
+
+                List<Students> sList = session.createQuery("FROM " + Students.class.getSimpleName()).getResultList();
+                List<Course> cList = session.createQuery("FROM " + Course.class.getSimpleName()).getResultList();
+
+                List<Students> students = sList.stream().filter(o -> Objects.equals(o.getName(), p.getStudentName())).collect(Collectors.toList());
+                List<Course> courses = cList.stream().filter(o -> Objects.equals(o.getName(), p.getCourseName())).collect(Collectors.toList());
+
+//                LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList();
+
+//                linkedPurchaseList.setStudentId(students.get(0).getId());
+//                linkedPurchaseList.setCourseId(courses.get(0).getId());
+//                session.beginTransaction();
+//                session.save(linkedPurchaseList);
+//                session.getTransaction().commit();
+
+            }
+
 
             session.close();
 

@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="Courses")
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
+@Table(name="Courses")
 class Course
 {
     @Id

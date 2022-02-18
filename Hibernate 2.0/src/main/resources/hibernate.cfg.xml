@@ -24,6 +24,7 @@
         <mapping class="Subscriptions"/>
         <mapping class="Teacher"/>
         <mapping class="PurchaseList"/>
+        <mapping class="LinkedPurchaseList"/>
 
     </session-factory>
 </hibernate-configuration>

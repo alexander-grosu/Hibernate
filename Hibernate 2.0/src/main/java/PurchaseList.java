@@ -24,6 +24,7 @@ public class PurchaseList implements Serializable
     @Column(name = "registration_date")
     private Date registrationDate;
 
+    @AllArgsConstructor
     @NoArgsConstructor
     @EqualsAndHashCode
     @ToString
