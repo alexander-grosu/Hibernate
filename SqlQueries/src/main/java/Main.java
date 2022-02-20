@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/";
         String user = "root";
-        String pass = "bobik750";
+        String pass = "password";
 
         //base schema in resources folder
 
