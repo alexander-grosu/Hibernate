@@ -7,6 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import javax.persistence.Query;
+import java.sql.SQLOutput;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -69,20 +71,20 @@ public class Main {
 
             System.out.println("\n");
 
-            // new course
-//            Course course = new Course();          // id 50
+//            // new course
+//            Course course = new Course();          // id 47
 //            course.setType(CourseType.PROGRAMMING);
 //            course.setName("C++ с нуля до PRO");
 //            course.setDescription("Представляем вашему вниманию шикарный курс C++");
 //            course.setPrice(85000);
-//            course.setDuration(12);
+//            course.setDuration(10);
 //            course.setTeacher(session.get(Teacher.class,4));
-//            course.setPricePerHour(2000);
+//            course.setPricePerHour(8500);
 //            session.beginTransaction();
 //            session.save(course);
 //            session.getTransaction().commit();
 
-            // new student
+             //new student
 //            Students student = new Students();   //id 101
 //            student.setName("Alexander Grosu");
 //            student.setAge(32);
@@ -93,7 +95,7 @@ public class Main {
 
             //new subscription
 //            Subscriptions subscription = new Subscriptions();
-//            subscription.setSKey(new SubscriptionKey(101,50));
+//            subscription.setSKey(new SubscriptionKey(101,47));
 //            subscription.setSubscriptionDate(new Date());
 //            session.beginTransaction();
 //            session.save(subscription);
@@ -110,8 +112,8 @@ public class Main {
                     + "\n\t\t> start learning: " + student.getSubscriptionsList().get(0).getSubscriptionDate());
 
 
-            Subscriptions subscription = session.get(Subscriptions.class, new SubscriptionKey(101, 50));
-            if (session.get(Students.class, 101) != null && session.get(Course.class, 50) != null) {
+            Subscriptions subscription = session.get(Subscriptions.class, new SubscriptionKey(101, 47));
+            if (session.get(Students.class, 101) != null && session.get(Course.class, 47) != null) {
                 System.out.println("\nfind subscription with key (student id 101, course id 50)\n" + subscription);
             } else {
                 System.out.println("\nno such subscription exists");
@@ -121,22 +123,34 @@ public class Main {
 
             List<PurchaseList> pList = session.createQuery("FROM " + PurchaseList.class.getSimpleName()).getResultList();
             for (PurchaseList p : pList) {
+//
+//                List<Students> sList = session.createQuery("FROM " + Students.class.getSimpleName()).getResultList();
+//                List<Course> cList = session.createQuery("FROM " + Course.class.getSimpleName()).getResultList();
+//
+//                List<Students> students = sList.stream().filter(o -> Objects.equals(o.getName(), p.getStudentName())).collect(Collectors.toList());
+//                List<Course> courses = cList.stream().filter(o -> Objects.equals(o.getName(), p.getCourseName())).collect(Collectors.toList());
 
-                List<Students> sList = session.createQuery("FROM " + Students.class.getSimpleName()).getResultList();
-                List<Course> cList = session.createQuery("FROM " + Course.class.getSimpleName()).getResultList();
-
-                List<Students> students = sList.stream().filter(o -> Objects.equals(o.getName(), p.getStudentName())).collect(Collectors.toList());
-                List<Course> courses = cList.stream().filter(o -> Objects.equals(o.getName(), p.getCourseName())).collect(Collectors.toList());
-
+//                // insert in LinkedPurchaseList course id and student id from PurchaseList
 //                LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList();
-
-//                linkedPurchaseList.setStudentId(students.get(0).getId());
 //                linkedPurchaseList.setCourseId(courses.get(0).getId());
+//                linkedPurchaseList.setStudentId(students.get(0).getId());
 //                session.beginTransaction();
 //                session.save(linkedPurchaseList);
 //                session.getTransaction().commit();
 
             }
+
+            //Linked Purchase List
+            List<LinkedPurchaseList> list = session.createQuery("FROM " + LinkedPurchaseList.class.getSimpleName()).getResultList();
+
+            int linkedId = 1;
+            for(LinkedPurchaseList l : list){
+                System.out.println("\nLinked purchase # "+ linkedId + "  |  course id " + l.getCourseId() + "  |  student id " + l.getStudentId());
+                linkedId++;
+            }
+
+            System.out.println("\nLinked Purchase List SIZE: " + list.size());
+            System.out.println("Purchase List SIZE: " + pList.size());
 
             session.close();
 

@@ -1,7 +1,10 @@
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,43 +15,26 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @Table(name = "LinkedPurchaseList")
-public class LinkedPurchaseList {
-    @EmbeddedId
-    LinkedPurchaseKey lpKey;
+public class LinkedPurchaseList implements Serializable {
 
-    @Column(name = "student_id", updatable = false, insertable = false)
-    private Integer studentId;
+    @Id
+    @Column(name = "course_id")
+    Integer courseId;
 
-    @Column(name = "course_id", updatable = false, insertable = false)
-    private Integer courseId;
+    @Id
+    @Column(name = "student_id")
+    Integer studentId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         LinkedPurchaseList that = (LinkedPurchaseList) o;
-        return lpKey != null && Objects.equals(lpKey, that.lpKey);
+        return courseId != null && Objects.equals(courseId, that.courseId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lpKey);
+        return getClass().hashCode();
     }
-}
-
-@Data
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
-@Embeddable
-class LinkedPurchaseKey implements Serializable {
-
-    @Column(name = "student_id")
-    Integer studentId;
-
-    @Column(name = "course_id")
-    Integer courseId;
 }
