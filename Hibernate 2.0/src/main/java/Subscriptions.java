@@ -11,8 +11,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter 
-    @Table(name = "Subscriptions")
+@Setter
+@Table(name = "Subscriptions")
 public class Subscriptions
 {
     @EmbeddedId
