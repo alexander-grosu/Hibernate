@@ -7,12 +7,12 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Subscriptions")
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
+@Setter 
+    @Table(name = "Subscriptions")
 public class Subscriptions
 {
     @EmbeddedId
